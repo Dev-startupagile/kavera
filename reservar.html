@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reservar · Kavéra Aesthetics</title>
+<meta name="description" content="Agenda tu cita en Kavéra Aesthetics: pestañas, faciales, keratina y cejas en Quintana Roo.">
+<meta name="theme-color" content="#1E2A1D">
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.choice{text-align:left;color:#2E2224;border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:8px;min-height:44px;background:#FFFAF6;border:2px solid rgba(154,79,92,.12)}
+.choice[aria-pressed="true"]{border-color:#7A3A47;box-shadow:0 20px 40px -24px rgba(122,58,71,.6)}
+.pill{min-height:48px;padding:0 20px;border-radius:999px;display:inline-flex;align-items:center;gap:14px;background:#fff;color:#2E2224;border:1px solid rgba(122,58,71,.3)}
+.pill[aria-pressed="true"]{background:#7A3A47;color:#FFF6EE;border-color:#7A3A47}
+.day{min-height:88px;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:#fff;color:#2E2224;border:1px solid rgba(122,58,71,.2)}
+.day[aria-pressed="true"]{background:#7A3A47;color:#FFF6EE;border-color:#7A3A47;box-shadow:0 16px 30px -16px rgba(122,58,71,.8)}
+.time{font-size:16px;min-height:50px;border-radius:999px;background:#fff;color:#2E2224;border:1px solid rgba(122,58,71,.25)}
+.time[aria-pressed="true"]{background:#7A3A47;color:#FFF6EE;border-color:#7A3A47}
+.dot{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:500;transition:all .5s;background:#26342A;color:#CFC1B1;border:1px solid rgba(243,230,216,.2)}
+.dot.cur{background:#F2C9CC;color:#2A1B1E;border-color:#F2C9CC;box-shadow:0 0 0 6px rgba(242,201,204,.18)}
+.dot.done{background:#7A3A47;color:#FFF6EE;border-color:#7A3A47}
+.next{font-size:16px;font-weight:500;min-height:54px;padding:0 32px;border-radius:999px;border:0;transition:all .4s;background:#1E2A1D;color:#F3E6D8;cursor:pointer;box-shadow:0 16px 30px -14px rgba(30,42,29,.8)}
+.next:disabled{background:#E3D6CB;color:#6A585B;cursor:not-allowed;box-shadow:none}
+.back{font-size:15px;min-height:48px;padding:0 18px;border-radius:999px;border:0;background:transparent;color:#7A3A47;cursor:pointer}
+.row{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-top:1px solid rgba(243,230,216,.12);font-size:15px}
+</style>
+</head>
+<body>
+<div style="min-height:100vh;position:relative;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none">
+    <div class="kv-glow" style="position:absolute;width:640px;height:640px;right:-200px;top:-200px;border-radius:50%;background:radial-gradient(circle,rgba(242,170,180,.35) 0%,rgba(242,170,180,0) 65%)"></div>
+    <div class="kv-glow" style="position:absolute;width:540px;height:540px;left:-220px;bottom:-120px;border-radius:50%;background:radial-gradient(circle,rgba(201,184,163,.25) 0%,rgba(201,184,163,0) 65%);animation-delay:2s"></div>
+    <span class="kv-petal" style="left:12%;width:12px;height:12px;background:#F2C9CC;animation-duration:18s"></span>
+    <span class="kv-petal" style="left:48%;width:10px;height:10px;background:#F3E6D8;animation-duration:22s;animation-delay:6s"></span>
+    <span class="kv-petal" style="left:86%;width:14px;height:14px;background:#E8A9B2;animation-duration:20s;animation-delay:3s"></span>
+  </div>
+
+  <header style="position:relative;z-index:2;border-bottom:1px solid rgba(243,230,216,.12)">
+    <nav class="wrap" style="padding:14px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+      <a href="/" class="brand"><span aria-hidden="true" style="font-size:20px;font-family:'Jost'">←</span><img src="/logo.jpg" alt=""><span>KAVÉRA</span></a>
+      <div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div>
+    </nav>
+  </header>
+
+  <main class="wrap" style="position:relative;z-index:1;padding:48px 20px 90px">
+    <div class="kv-in" style="max-width:720px;margin-bottom:36px">
+      <p class="eyebrow" style="margin-bottom:12px" data-t="bEyebrow"></p>
+      <h1 style="font-size:clamp(42px,6vw,76px);line-height:1"><span data-t="bH1a"></span> <em class="kv-shimmer" data-t="bH1b"></em></h1>
+    </div>
+
+    <div data-t-aria="progressAria" role="group" style="margin:0 0 34px;position:relative">
+      <div aria-hidden="true" style="position:absolute;left:22px;right:22px;top:21px;height:2px;background:rgba(243,230,216,.15)"></div>
+      <div aria-hidden="true" id="bar" class="kv-bar" style="position:absolute;left:22px;top:21px;height:2px;background:linear-gradient(90deg,#7A3A47,#F2C9CC);width:0"></div>
+      <ol id="stepper" style="list-style:none;margin:0;padding:0;position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px"></ol>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start">
+      <section id="panel" style="flex:999 1 560px;min-width:0;border-radius:34px;background:#F6ECE3;color:#2E2224;padding:38px 34px;box-shadow:0 60px 120px -60px rgba(0,0,0,.7)"></section>
+
+      <aside style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:20px">
+        <div style="border-radius:30px;padding:30px 26px;background:rgba(243,230,216,.06);border:1px solid rgba(243,230,216,.16)">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
+            <div style="position:relative;width:70px;height:70px;flex:none">
+              <div aria-hidden="true" class="kv-rotate" style="position:absolute;inset:-6px;border-radius:50%;border:1px dashed rgba(242,201,204,.7)"></div>
+              <img src="/logo.jpg" alt="" style="width:70px;height:70px;border-radius:50%;object-fit:cover;display:block">
+            </div>
+            <div><div style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#F2C9CC" data-t="sumEyebrow"></div><div class="serif" style="font-size:26px">Kavéra Aesthetics</div></div>
+          </div>
+          <div id="summary"></div>
+        </div>
+        <div style="border-radius:30px;padding:28px 26px;background:rgba(242,201,204,.08);border:1px solid rgba(242,201,204,.3)">
+          <h3 style="margin-bottom:14px;font-weight:600;font-size:24px" data-t="howTitle"></h3>
+          <ol id="how" style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.6;color:#E1D4C5"></ol>
+        </div>
+        <a id="help" href="#" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;min-height:56px;padding:0 22px;border-radius:999px;border:1px solid rgba(243,230,216,.3);color:#F3E6D8;font-size:15px">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 19.6L3 21z"></path></svg><span data-t="help"></span>
+        </a>
+      </aside>
+    </div>
+  </main>
+</div>
+
+<script src="/site.js"></script>
+<script>
+(function () {
+  const { CONFIG, T, getLang, wa, esc, applyText, langButtons } = KV;
+  const q = new URLSearchParams(location.search);
+  const S = { lang: getLang(), step: 1, svc: ['lashes','facials','keratin','brows'].includes(q.get('s')) ? q.get('s') : '', opt: -1, day: -1, time: '', name: '', phone: '', notes: '' };
+  if (S.svc && T.es.bookOpts[S.svc].length === 1) S.opt = 0;
+  const E = '—';
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const dates = []; for (let i = 0; i < 14; i++) { const d = new Date(today); d.setDate(today.getDate() + i); dates.push(d); }
+  const fmt = (d, o, loc) => { try { return d.toLocaleDateString(loc, o); } catch (e) { return d.toDateString(); } };
+  const ICON_WA = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 19.6L3 21z"></path></svg>';
+
+  function can(step) {
+    if (step === 1) return !!S.svc && S.opt >= 0;
+    if (step === 2) return S.day >= 0 && !!S.time;
+    if (step === 3) return S.name.trim().length > 1 && S.phone.replace(/[^0-9]/g, '').length >= 8;
+    return true;
+  }
+  function go(n) { S.step = n; render(); try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) {} }
+
+  function render() {
+    const t = T[S.lang];
+    document.documentElement.lang = S.lang;
+    applyText(t);
+    langButtons(S.lang, (l) => { S.lang = l; render(); });
+    document.getElementById('help').href = wa(t.waHelp);
+    document.getElementById('how').innerHTML = t.how.map((h) => '<li>' + esc(h) + '</li>').join('');
+
+    const svc = t.services.find((s) => s.id === S.svc);
+    const opts = svc ? t.bookOpts[svc.id] : [];
+    const opt = svc && S.opt >= 0 ? opts[S.opt] : null;
+    const dateLabel = S.day >= 0 ? fmt(dates[S.day], { weekday: 'long', day: 'numeric', month: 'long' }, t.locale) : '';
+
+    // stepper
+    document.getElementById('stepper').innerHTML = t.bSteps.map((label, i) => {
+      const n = i + 1; const cls = n === S.step ? 'cur' : n < S.step ? 'done' : '';
+      return `<li style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><span class="dot ${cls}">${n < S.step ? '✓' : n}</span><span style="font-size:13px;letter-spacing:.08em;color:${n === S.step ? '#F3E6D8' : '#A99C8E'}">${esc(label)}</span></li>`;
+    }).join('');
+    document.getElementById('bar').style.width = 'calc((100% - 44px) * ' + (Math.min(S.step - 1, 3) / 3) + ')';
+
+    // summary
+    const rows = [[t.kSvc, svc ? svc.name : E], [t.kOpt, opt ? opt[0] : E], [t.kPrice, opt ? opt[1] : E], [t.kDate, dateLabel || E], [t.kTime, S.time || E]];
+    document.getElementById('summary').innerHTML = rows.map((r) => `<div class="row"><span style="color:#CFC1B1">${esc(r[0])}</span><span style="text-align:right">${esc(r[1])}</span></div>`).join('');
+
+    // panel
+    let html = '';
+    if (S.step === 1) {
+      html = `<div class="kv-in" style="display:flex;flex-direction:column;gap:22px">
+        <h2 style="font-weight:600;font-size:36px">${esc(t.s1Title)}</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+          ${t.services.map((s) => `<button type="button" class="choice kv-choice" data-svc="${s.id}" aria-pressed="${s.id === S.svc}">
+            <span aria-hidden="true" class="serif" style="width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(140deg,#F2C9CC,#E8A9B2);color:#2A1B1E;font-style:italic;font-size:22px">${s.num}</span>
+            <span class="serif" style="font-weight:600;font-size:26px;line-height:1.05">${esc(s.name)}</span>
+            <span style="font-size:13px;color:#6A585B">${esc(s.sub)}</span></button>`).join('')}
+        </div>
+        ${svc ? `<div class="kv-in" style="display:flex;flex-direction:column;gap:12px"><h3 style="font-family:'Jost';margin-top:6px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#7A3A47">${esc(t.s1Opt)}</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">${opts.map((o, i) => `<button type="button" class="pill kv-choice" data-opt="${i}" aria-pressed="${i === S.opt}"><span>${esc(o[0])}</span><span style="font-weight:500">${esc(o[1])}</span></button>`).join('')}</div></div>` : ''}
+      </div>`;
+    } else if (S.step === 2) {
+      html = `<div class="kv-in" style="display:flex;flex-direction:column;gap:22px">
+        <h2 style="font-weight:600;font-size:36px">${esc(t.s2Title)}</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:10px">
+          ${dates.map((d, i) => `<button type="button" class="day kv-choice" data-day="${i}" aria-pressed="${i === S.day}" aria-label="${esc(fmt(d, { weekday: 'long', day: 'numeric', month: 'long' }, t.locale))}">
+            <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase">${esc(fmt(d, { weekday: 'short' }, t.locale).replace('.', ''))}</span>
+            <span class="serif" style="font-size:30px;line-height:1;font-weight:600">${d.getDate()}</span>
+            <span style="font-size:12px">${esc(fmt(d, { month: 'short' }, t.locale).replace('.', ''))}</span></button>`).join('')}
+        </div>
+        ${S.day >= 0 ? `<div class="kv-in" style="display:flex;flex-direction:column;gap:12px"><h3 style="font-family:'Jost';margin-top:4px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#7A3A47">${esc(t.s2Time)}</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px">${CONFIG.hours.map((h) => `<button type="button" class="time kv-choice" data-time="${esc(h)}" aria-pressed="${h === S.time}">${esc(h)}</button>`).join('')}</div></div>` : ''}
+      </div>`;
+    } else if (S.step === 3) {
+      html = `<div class="kv-in" style="display:flex;flex-direction:column;gap:18px">
+        <h2 style="font-weight:600;font-size:36px">${esc(t.s3Title)}</h2>
+        <label class="field">${esc(t.fName)}<input type="text" id="f-name" autocomplete="name" value="${esc(S.name)}" placeholder="${esc(t.fNamePh)}" style="min-height:52px;border-radius:16px"></label>
+        <label class="field">WhatsApp<input type="tel" id="f-phone" autocomplete="tel" value="${esc(S.phone)}" placeholder="${esc(t.fPhonePh)}" style="min-height:52px;border-radius:16px"></label>
+        <label class="field">${esc(t.fNotes)}<textarea id="f-notes" rows="3" placeholder="${esc(t.fNotesPh)}" style="border-radius:16px">${esc(S.notes)}</textarea></label>
+      </div>`;
+    } else if (S.step === 4) {
+      const review = rows.concat([[t.kName, S.name || E], [t.kPhone, S.phone || E]]).concat(S.notes ? [[t.kNotes, S.notes]] : []);
+      const msg = [t.waIntro].concat(review.filter((r) => r[1] !== E).map((r) => '• ' + r[0] + ': ' + r[1])).join('\n');
+      html = `<div class="kv-in" style="display:flex;flex-direction:column;gap:18px">
+        <h2 style="font-weight:600;font-size:36px">${esc(t.s4Title)}</h2>
+        <p style="margin:0;font-size:16px;line-height:1.7;color:#4E3D40">${esc(t.s4Sub)}</p>
+        <div style="border-radius:22px;background:#FFFAF6;border:1px solid rgba(154,79,92,.16);padding:6px 22px">
+          ${review.map((r) => `<div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(154,79,92,.12);font-size:15px"><span style="color:#6A585B">${esc(r[0])}</span><span style="font-weight:500;text-align:right">${esc(r[1])}</span></div>`).join('')}
+        </div>
+        <a id="confirm" class="btn btn-wine kv-shine" href="${wa(msg)}" target="_blank" rel="noopener" style="min-height:58px;font-size:17px">${ICON_WA}<span>${esc(t.s4Wa)}</span></a>
+        <a href="${esc(CONFIG.calendly)}" target="_blank" rel="noopener" style="display:flex;justify-content:center;align-items:center;min-height:52px;border-radius:999px;border:1px solid #7A3A47;color:#7A3A47;font-size:15px">${esc(t.s4Cal)}</a>
+      </div>`;
+    } else {
+      html = `<div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;padding:20px 0">
+        <div style="position:relative;width:140px;height:140px">
+          <span aria-hidden="true" class="kv-burst" style="--x:-90px;--y:-70px;background:#E8A9B2"></span><span aria-hidden="true" class="kv-burst" style="--x:90px;--y:-80px;background:#F2C9CC"></span><span aria-hidden="true" class="kv-burst" style="--x:-100px;--y:40px;background:#C9B8A3"></span><span aria-hidden="true" class="kv-burst" style="--x:100px;--y:50px;background:#E8A9B2"></span><span aria-hidden="true" class="kv-burst" style="--x:0px;--y:-110px;background:#7A3A47"></span><span aria-hidden="true" class="kv-burst" style="--x:-40px;--y:100px;background:#F2C9CC"></span>
+          <svg class="kv-pop" viewBox="0 0 140 140" role="img" aria-label="OK" style="width:140px;height:140px;display:block"><circle cx="70" cy="70" r="64" fill="#F2C9CC"></circle><path class="kv-check" d="M44 72 L 62 90 L 98 52" stroke="#7A3A47" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <h2 style="font-weight:600;font-size:40px">${esc(t.doneTitle)}</h2>
+        <p style="margin:0;max-width:460px;font-size:16px;line-height:1.7;color:#4E3D40">${esc(t.doneSub)}</p>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:6px">
+          <a href="/" class="btn btn-green" style="min-height:50px;padding:0 26px">${esc(t.doneHome)}</a>
+          <button type="button" id="restart" class="btn" style="min-height:50px;padding:0 26px;border:1px solid #7A3A47;background:transparent;color:#7A3A47">${esc(t.doneAgain)}</button>
+        </div></div>`;
+    }
+    if (S.step < 5) {
+      html += `<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:30px;padding-top:22px;border-top:1px solid rgba(154,79,92,.15)">
+        <button type="button" id="back" class="back" style="visibility:${S.step === 1 ? 'hidden' : 'visible'}">← ${esc(t.back)}</button>
+        ${S.step < 4 ? `<button type="button" id="next" class="next kv-shine" ${can(S.step) ? '' : 'disabled'}>${esc(t.next)} →</button>` : ''}
+      </div>`;
+    }
+    const panel = document.getElementById('panel');
+    panel.innerHTML = html;
+
+    // wire events
+    panel.querySelectorAll('[data-svc]').forEach((b) => b.onclick = () => { S.svc = b.dataset.svc; S.opt = T.es.bookOpts[S.svc].length === 1 ? 0 : -1; render(); });
+    panel.querySelectorAll('[data-opt]').forEach((b) => b.onclick = () => { S.opt = +b.dataset.opt; render(); });
+    panel.querySelectorAll('[data-day]').forEach((b) => b.onclick = () => { S.day = +b.dataset.day; S.time = ''; render(); });
+    panel.querySelectorAll('[data-time]').forEach((b) => b.onclick = () => { S.time = b.dataset.time; render(); });
+    const fn = panel.querySelector('#f-name'), fp = panel.querySelector('#f-phone'), fo = panel.querySelector('#f-notes');
+    const upd = () => { S.name = fn.value; S.phone = fp.value; S.notes = fo.value; const nx = panel.querySelector('#next'); if (nx) nx.disabled = !can(3); };
+    if (fn) { fn.oninput = upd; fp.oninput = upd; fo.oninput = upd; }
+    const nx = panel.querySelector('#next'); if (nx) nx.onclick = () => { if (can(S.step)) go(S.step + 1); };
+    const bk = panel.querySelector('#back'); if (bk) bk.onclick = () => { if (S.step > 1) go(S.step - 1); };
+    const cf = panel.querySelector('#confirm'); if (cf) cf.addEventListener('click', () => setTimeout(() => go(5), 300));
+    const rs = panel.querySelector('#restart'); if (rs) rs.onclick = () => { Object.assign(S, { step: 1, svc: '', opt: -1, day: -1, time: '', notes: '' }); render(); };
+  }
+  render();
+})();
+</script>
+</body>
+</html>
