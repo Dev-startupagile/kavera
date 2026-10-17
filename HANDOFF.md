@@ -126,6 +126,14 @@ Reviews carousel (`revText`, `revWho`): fake placeholder cards, replace with rea
 
 ## 9. AI booking agent, plan (not built yet)
 
+### Research 2026-10-16: recommended route = buy, don't build
+- **AgendaPro** (Latin American salon/estética software): online agenda 24/7, automatic WhatsApp/SMS/email reminders, and an **AI agent on WhatsApp** that answers in natural language, checks real availability, books, reschedules and hands off to a human. Their page says the AI is "incluido dentro de los planes"; prices not published; 14-day free trial; setup = create account, add services/hours, connect WhatsApp Business. **Recommended first try.** Confirm during trial: monthly MXN price for 1 professional, and whether connecting WhatsApp moves her number off the normal WhatsApp app.
+- **Fresha**: from $14.95/user/month (Capterra), reminders by email/SMS (no WhatsApp listed), reviewers complain about fees. Not recommended for her.
+- **Google Calendar appointment schedule**: free on personal Gmail but only one booking page, and reminders/payments are paid (Google One Premium / Workspace ~$9.99/mo). Free fallback with no AI.
+- **Custom (SA builds it)**: WhatsApp Cloud API + model + Google Calendar. Since 2025-07-01 Meta charges per *template* message; free-form replies within 24h of the client writing are free. Most control, most work; good later as an SA showcase.
+- If AgendaPro is chosen: point every "Agendar cita / Reservar" button on kavera.mx at her AgendaPro booking link (CONFIG), and keep /reservar as a fallback or remove it.
+
+### Earlier notes
 Two possible versions. DJ said "connect the booking agent" on 2026-10-16; which one he means was being confirmed.
 
 **A. WhatsApp AI agent (the real goal).** Answers clients on WhatsApp, quotes prices, offers slots, books, and hands off to her when unsure.
