@@ -123,8 +123,7 @@ window.KV = (function () {
   function getLang() {
     try { const q = new URLSearchParams(location.search).get('lang'); if (q === 'en' || q === 'es') { localStorage.setItem('kv-lang', q); return q; } } catch (e) {}
     try { const s = localStorage.getItem('kv-lang'); if (s === 'en' || s === 'es') return s; } catch (e) {}
-    try { if ((navigator.language || '').toLowerCase().startsWith('en')) return 'en'; } catch (e) {}
-    return 'es';
+    return 'es'; // Spanish by default; English only when the visitor taps EN
   }
   function setLang(l) { try { localStorage.setItem('kv-lang', l); } catch (e) {} }
   const num = () => String(CONFIG.whatsapp).replace(/[^0-9]/g, '');
