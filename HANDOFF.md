@@ -124,6 +124,12 @@ Reviews carousel (`revText`, `revWho`): fake placeholder cards, replace with rea
 7. Optional: add the other services (laser, scars, skin care products) as cards and booking options.
 8. **AI booking agent** (section 9).
 
+## 8b. Booking calendar: CHOSEN 2026-10-17 = Cal.com free plan (WhatsApp agent paused, revisit later)
+- Why: free Individuals plan has unlimited event types (one per service, each with its own duration), email/SMS notifications, templated reminder workflows, "no usage limits", open source, and an API the future WhatsApp agent can book through.
+- Setup: account on cal.com signed in with her Google (Karenv6152@gmail.com) → connect Google Calendar (blocks double-booking with personal events) → event types per service/option with durations + price in description → working hours → Spanish → reminder workflow 24h before → put links on kavera.mx (CONFIG.calendly replaced by Cal.com links, or embed in /reservar).
+- Runner-up: Setmore free (up to 4 staff, unlimited appointments, email reminders; 2-way Google sync and SMS are Pro, ~$5/user/mo annual).
+- Rejected: Calendly free (1 event type only), Google Calendar free booking page (1 page only, reminders paid).
+
 ## 9. AI booking agent, plan (not built yet)
 
 ### Research 2026-10-16: recommended route = buy, don't build
