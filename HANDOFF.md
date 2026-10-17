@@ -133,6 +133,11 @@ Reviews carousel (`revText`, `revWho`): fake placeholder cards, replace with rea
 - **Custom (SA builds it)**: WhatsApp Cloud API + model + Google Calendar. Since 2025-07-01 Meta charges per *template* message; free-form replies within 24h of the client writing are free. Most control, most work; good later as an SA showcase.
 - If AgendaPro is chosen: point every "Agendar cita / Reservar" button on kavera.mx at her AgendaPro booking link (CONFIG), and keep /reservar as a fallback or remove it.
 
+### Update: "coexistence" removes the second-number problem
+- Meta's **WhatsApp Coexistence**: her **existing** WhatsApp Business app number can also be connected to an AI/automation provider. She keeps chatting from her phone; the AI answers on the same number; messages sync both ways. Requirements (per Chakra's explainer): WhatsApp Business app ≥ 2.24.17 (not the regular app), the app stays installed and is opened at least every 14 days, a Meta Business Portfolio, and onboarding through Meta's "Embedded Signup" (Facebook login popup inside the provider's dashboard, no new number). Limits: groups and calls stay on the phone, one provider at a time, display name may show only the number to new clients. Mexico not confirmed as supported; check with the provider.
+- Providers to test, in order: **AgendaPro** (booking-native AI that writes into a real agenda), **Kommo** (has a Spanish "CRM de WhatsApp para salones de belleza" page, from ~$15/user/mo, booking per YCloud's comparison), **YCloud** (coexistence confirmed, free tier, $39/mo Growth; booking not confirmed).
+- Avoid "QR-code / WhatsApp Web" bot tools that aren't official Meta partners: they work by automating WhatsApp Web and risk getting her number banned.
+
 ### Earlier notes
 Two possible versions. DJ said "connect the booking agent" on 2026-10-16; which one he means was being confirmed.
 
