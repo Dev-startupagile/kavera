@@ -133,6 +133,14 @@ Reviews carousel (`revText`, `revWho`): fake placeholder cards, replace with rea
 - **Custom (SA builds it)**: WhatsApp Cloud API + model + Google Calendar. Since 2025-07-01 Meta charges per *template* message; free-form replies within 24h of the client writing are free. Most control, most work; good later as an SA showcase.
 - If AgendaPro is chosen: point every "Agendar cita / Reservar" button on kavera.mx at her AgendaPro booking link (CONFIG), and keep /reservar as a fallback or remove it.
 
+### CHOSEN 2026-10-16 23:25: WhatsApp MCP route on a NEW dedicated number
+- DJ is buying a new prepaid SIM (Telcel) just for Kavéra. Data on the SIM is optional; the SIM only has to receive the one-time WhatsApp verification SMS/call and stay active (recharge occasionally so Telcel doesn't recycle the number).
+- A spare phone runs **WhatsApp Business** with that number, plugged in and on Wi-Fi 24/7 (linked devices drop if the phone is offline ~2 weeks).
+- An SA Mac mini runs **personal-whatsapp-mcp** (`pip install personal-whatsapp-mcp`, Python 3.11+, libmagic; scan QR at 127.0.0.1:8100; MCP at /mcp). It's unofficial (whatsmeow / WhatsApp Web linked device), so ban risk exists. Mitigate: dedicated number, warm up a few days with normal use, only reply to inbound, no bulk messages.
+- Auto-reply modes: "Model" (OpenAI-compatible endpoint, no tools; could point at SA's GPT-OSS) or **"Webhook"** (our endpoint decides and replies via MCP). Plan: Webhook → small service on the same Mac mini → Claude with tools (prices from site.js, Google Calendar availability/booking, handoff to owner).
+- Its token gives full read/send access to the WhatsApp account: never expose it, keep on localhost/tailnet only. Logout wipes history.
+- Once the number exists: put it in CONFIG.whatsapp in site.js (fixes the broken buttons).
+
 ### DJ's direction (2026-10-16 late): innovative, Claude-powered, no expensive subscription
 Recommended build = **"Kavéra Concierge"**: our own Claude agent, hosted in this same Vercel project.
 - Her existing WhatsApp Business number → linked via Meta **coexistence** → WhatsApp Cloud API webhook → Vercel function `/api/whatsapp` in this repo → Claude (Agent SDK / Messages API, small fast model, tool use) → replies.
