@@ -24,6 +24,11 @@ Goal of the site: look very aesthetic and feminine, showcase services, and get p
 - Goal: **3–4 bookings per day**. Target: Mexican women in Playa del Carmen.
 - Growth plan in progress: Google Business Profile, women's studio and bridal/XV partnerships (FORMA, YenyFit, Zona/Luna/Althea/Find Your Flow pilates, VALMA, nail salons), local Instagram/FB ads with a message button, lash refill retention, referrals. Main competitor for keratina: Sukar Beauty Bar (tourist pricing).
 
+### Target persona and lead-gen ideas (2026-10-17)
+- Persona: young Mexican women in Playa (~20–34), decent income (~25k MXN/mo), go to the gym/pilates, often with a partner (incl. foreign/expat boyfriends) who'd pay for treats.
+- Market size (INEGI 2020 via telencuestas): Solidaridad pop. 333,800; women 18–24: 19,760, 25–29: 19,477, 30–34: 19,222 (≈58k women 18–34). Mexperience cites INM: >7% of Playa is non-Mexican.
+- Ideas: (1) **AI "Tu mirada ideal" quiz** on kavera.mx: selfie/questions → lash style match → shareable result card → coupon unlocked with email + WhatsApp (opt-in list). (2) **Gift cards for partners**, English "Treat her" page aimed at expat men (expat FB groups, holidays). (3) Gym/pilates QR → quiz. (4) Opt-in email sequences. No scraped/cold email lists (spam + Mexican data-protection law).
+
 ## 2. Where everything lives
 
 | Thing | Where | Notes |
