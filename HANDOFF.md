@@ -18,6 +18,12 @@ Goal of the site: look very aesthetic and feminine, showcase services, and get p
 
 ---
 
+### Business facts (DJ, 2026-10-17)
+- Small **in-home studio** in Playa del Carmen (share exact address only after booking). Capacity about **4 clients/day**.
+- Main services by volume: **lashes** and **keratina**. Rough prices (DJ guessing, real list coming): new lashes ≤ **$800 MXN**, keratina about **$1,500 MXN**. Her prices are low for the area.
+- Goal: **3–4 bookings per day**. Target: Mexican women in Playa del Carmen.
+- Growth plan in progress: Google Business Profile, women's studio and bridal/XV partnerships (FORMA, YenyFit, Zona/Luna/Althea/Find Your Flow pilates, VALMA, nail salons), local Instagram/FB ads with a message button, lash refill retention, referrals. Main competitor for keratina: Sukar Beauty Bar (tourist pricing).
+
 ## 2. Where everything lives
 
 | Thing | Where | Notes |
