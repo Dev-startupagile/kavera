@@ -129,6 +129,12 @@ window.KV = (function () {
     }
   };
 
+  // Show every price as Mexican pesos (MXN) so foreigners don't read it as USD
+  ['es', 'en'].forEach((l) => {
+    const lists = T[l].services.map((s) => s.prices).concat(Object.values(T[l].bookOpts));
+    lists.forEach((list) => list.forEach((p) => { if (p[1].includes('$') && !p[1].endsWith('MXN')) p[1] += ' MXN'; }));
+  });
+
   function getLang() {
     try { const q = new URLSearchParams(location.search).get('lang'); if (q === 'en' || q === 'es') { localStorage.setItem('kv-lang', q); return q; } } catch (e) {}
     try { const s = localStorage.getItem('kv-lang'); if (s === 'en' || s === 'es') return s; } catch (e) {}
