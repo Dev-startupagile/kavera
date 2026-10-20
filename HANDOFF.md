@@ -142,6 +142,12 @@ Reviews carousel (`revText`, `revWho`): fake placeholder cards, replace with rea
 - Runner-up: Setmore free (up to 4 staff, unlimited appointments, email reminders; 2-way Google sync and SMS are Pro, ~$5/user/mo annual).
 - Rejected: Calendly free (1 event type only), Google Calendar free booking page (1 page only, reminders paid).
 
+## 8c. Marketing automations, plan (DJ, 2026-10-19): run in-house on SA machines with local models
+Order: (1) WhatsApp number live, (2) Cal.com live, (3) then build automations and hand them to SA's own machines.
+- Stack idea: Cal.com API/webhooks → **n8n self-hosted** (free, visual, DJ can read it) on an SA Mac mini → **local model** (Qwen or GPT-OSS on a DGX Spark, OpenAI-compatible endpoint over Tailscale) → senders: WhatsApp MCP on her business number, an email-sending service for the opt-in list, Instagram drafts for her approval.
+- First automations: refill reminder (day 14–18 after lashes), thank-you + review request (day 1), no-show/reschedule follow-up, Monday "lugares libres esta semana" to opted-in clients, birthday offer, quiz-lead email sequence, IG caption/Reel script drafts from her photos (she approves), weekly numbers report, later the inbound WhatsApp agent on the local model.
+- Rules: opt-in contacts only; WhatsApp sends slow and few (ban risk on an unofficial connection); a human approves anything sent to many people until it's proven; secrets only in env/config on the machines, never in the repo.
+
 ## 9. AI booking agent, plan (not built yet)
 
 ### Research 2026-10-16: recommended route = buy, don't build
