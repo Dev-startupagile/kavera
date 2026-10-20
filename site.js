@@ -10,6 +10,15 @@ window.KV = (function () {
   };
   // ======================
 
+  // ===== PRICE LIST (MXN) — from her official list, Oct 2026 =====
+  const LASH_ES = [['Clásicas', '$500'], ['Rímel', '$550'], ['Tecnológicas 3D/5D', '$600'], ['Efecto Aura', '$600'], ['Efecto hawaiano', '$600'], ['Volumen 8D', '$650'], ['Efecto delineado', '$650'], ['Efecto wispy', '$700'], ['Lifting de pestañas', '$350'], ['Retoque', '$450'], ['Retiro de pestañas', '$100']];
+  const LASH_EN = [['Classic', '$500'], ['Mascara effect', '$550'], ['Tech 3D/5D', '$600'], ['Aura effect', '$600'], ['Hawaiian effect', '$600'], ['Volume 8D', '$650'], ['Eyeliner effect', '$650'], ['Wispy effect', '$700'], ['Lash lift', '$350'], ['Refill', '$450'], ['Lash removal', '$100']];
+  const BROW_ES = [['Laminado', '$150'], ['Laminado + limpieza', '$200'], ['Limpieza y perfilación', 'Consultar']];
+  const BROW_EN = [['Lamination', '$150'], ['Lamination + cleanup', '$200'], ['Cleanup & shaping', 'Ask us']];
+  const FACIAL_ES = [['Limpieza profunda', '$500'], ['Control acné', '$600'], ['Detox', '$600'], ['Profunda premium', '$650'], ['Hidratante', '$650']];
+  const FACIAL_EN = [['Deep cleansing', '$500'], ['Acne control', '$600'], ['Detox', '$600'], ['Premium deep cleansing', '$650'], ['Hydrating', '$650']];
+  // ================================================================
+
   const T = {
     es: {
       navScenes: 'Tratamientos', navServices: 'Precios', navFaq: 'Preguntas', navBook: 'Reservar',
@@ -42,12 +51,12 @@ window.KV = (function () {
       footerLoc: 'Quintana Roo, México',
       waHello: 'Hola Kavéra, me gustaría agendar una cita.', waName: 'Nombre', waSvc: 'Servicio', waWhen: 'Horario preferido',
       services: [
-        { id: 'lashes', num: 'i', name: 'Pestañas', sub: 'Extensiones y lifting', desc: 'Extensiones y lifting para una mirada intensa y natural. Varios estilos y volúmenes a tu medida.', prices: [['Clásicas', '$[PRECIO]'], ['Volumen', '$[PRECIO]'], ['Retoque', '$[PRECIO]']] },
-        { id: 'facials', num: 'ii', name: 'Faciales', sub: 'Limpieza e hidratación', desc: 'Limpieza profunda, hidratación y luminosidad. Tu piel, descansada y radiante.', prices: [['Facial', '$[PRECIO]']] },
-        { id: 'keratin', num: 'iii', name: 'Keratina', sub: 'Precio según largo', desc: 'Cabello liso, suave y sin frizz por semanas. El precio depende del largo.', prices: [['Cabello corto', 'desde $500 MXN'], ['Cabello largo', 'hasta $2,000 MXN']] },
-        { id: 'brows', num: 'iv', name: 'Laminado de cejas', sub: 'Lifting y planchado', desc: 'Cejas peinadas, definidas y con más volumen. Un lifting que enmarca tu rostro.', prices: [['Laminado', '$150 MXN']] }
+        { id: 'lashes', num: 'i', name: 'Pestañas', sub: 'Extensiones, efectos y lifting', desc: 'Extensiones y lifting para una mirada intensa y natural. Muchos estilos y efectos a tu medida.', prices: LASH_ES },
+        { id: 'facials', num: 'ii', name: 'Faciales', sub: 'Limpieza, detox e hidratación', desc: 'Limpieza profunda, control de acné, detox e hidratación. Tu piel, descansada y radiante.', prices: FACIAL_ES },
+        { id: 'keratin', num: 'iii', name: 'Keratina', sub: 'Precio según largo', desc: 'Cabello liso, suave y sin frizz por semanas. El precio depende del largo.', prices: [['Cabello corto', 'desde $500'], ['Cabello largo', 'hasta $2,000']] },
+        { id: 'brows', num: 'iv', name: 'Laminado de cejas', sub: 'Lifting y planchado', desc: 'Cejas peinadas, definidas y con más volumen. Un lifting que enmarca tu rostro.', prices: BROW_ES }
       ],
-      bookOpts: { lashes: [['Clásicas', '$[PRECIO]'], ['Volumen', '$[PRECIO]'], ['Retoque', '$[PRECIO]']], facials: [['Facial', '$[PRECIO]']], keratin: [['Cabello corto', '$500 MXN'], ['Cabello largo', '$2,000 MXN']], brows: [['Laminado', '$150 MXN']] },
+      bookOpts: { lashes: LASH_ES, facials: FACIAL_ES, keratin: [['Cabello corto', '$500'], ['Cabello largo', '$2,000']], brows: BROW_ES },
       steps: [['01', 'Elige tu servicio', 'Pestañas, faciales, keratina o cejas, con su opción y precio.'], ['02', 'Escoge día y hora', 'Ves los horarios disponibles y apartas el que te quede mejor.'], ['03', 'Deja tus datos', 'Solo tu nombre y WhatsApp, para confirmarte la cita.'], ['04', 'Recibe tu confirmación', 'Te escribimos por WhatsApp con la ubicación y los detalles.']],
       faq: [['¿Cómo agendo mi cita?', 'En nuestra página de reservas eliges servicio, día y hora, y nos dejas tu nombre y WhatsApp. También puedes escribirnos directo por WhatsApp.'], ['¿Dónde están ubicados?', 'En Quintana Roo. Te compartimos la ubicación exacta por WhatsApp al confirmar tu cita.'], ['¿Cuánto cuesta la keratina?', 'Depende del largo de tu cabello: desde $500 MXN en cabello corto hasta $2,000 MXN en cabello largo.'], ['¿Cómo puedo pagar?', '[MÉTODOS DE PAGO: efectivo, transferencia, tarjeta…]'], ['¿Puedo cambiar o cancelar mi cita?', 'Sí, avísanos por WhatsApp. [POLÍTICA DE CANCELACIÓN]']],
       // booking page
@@ -96,12 +105,12 @@ window.KV = (function () {
       footerLoc: 'Quintana Roo, Mexico',
       waHello: 'Hi Kavéra, I would like to book an appointment.', waName: 'Name', waSvc: 'Service', waWhen: 'Preferred time',
       services: [
-        { id: 'lashes', num: 'i', name: 'Lashes', sub: 'Extensions and lifts', desc: 'Extensions and lash lifts for an intense yet natural look. Several styles and volumes, made for you.', prices: [['Classic', '$[PRICE]'], ['Volume', '$[PRICE]'], ['Refill', '$[PRICE]']] },
-        { id: 'facials', num: 'ii', name: 'Facials', sub: 'Cleanse and hydrate', desc: 'Deep cleansing, hydration and glow. Your skin, rested and radiant.', prices: [['Facial', '$[PRICE]']] },
-        { id: 'keratin', num: 'iii', name: 'Keratin', sub: 'Price by length', desc: 'Smooth, soft, frizz-free hair for weeks. Price depends on length.', prices: [['Short hair', 'from $500 MXN'], ['Long hair', 'up to $2,000 MXN']] },
-        { id: 'brows', num: 'iv', name: 'Brow lamination', sub: 'Lift and set', desc: 'Brushed-up, defined, fuller brows. A lift that frames your face.', prices: [['Lamination', '$150 MXN']] }
+        { id: 'lashes', num: 'i', name: 'Lashes', sub: 'Extensions, effects and lifts', desc: 'Extensions and lash lifts for an intense yet natural look. Many styles and effects, made for you.', prices: LASH_EN },
+        { id: 'facials', num: 'ii', name: 'Facials', sub: 'Cleanse, detox and hydrate', desc: 'Deep cleansing, acne control, detox and hydration. Your skin, rested and radiant.', prices: FACIAL_EN },
+        { id: 'keratin', num: 'iii', name: 'Keratin', sub: 'Price by length', desc: 'Smooth, soft, frizz-free hair for weeks. Price depends on length.', prices: [['Short hair', 'from $500'], ['Long hair', 'up to $2,000']] },
+        { id: 'brows', num: 'iv', name: 'Brow lamination', sub: 'Lift and set', desc: 'Brushed-up, defined, fuller brows. A lift that frames your face.', prices: BROW_EN }
       ],
-      bookOpts: { lashes: [['Classic', '$[PRICE]'], ['Volume', '$[PRICE]'], ['Refill', '$[PRICE]']], facials: [['Facial', '$[PRICE]']], keratin: [['Short hair', '$500 MXN'], ['Long hair', '$2,000 MXN']], brows: [['Lamination', '$150 MXN']] },
+      bookOpts: { lashes: LASH_EN, facials: FACIAL_EN, keratin: [['Short hair', '$500'], ['Long hair', '$2,000']], brows: BROW_EN },
       steps: [['01', 'Choose your service', 'Lashes, facials, keratin or brows, with the option and price.'], ['02', 'Pick a day and time', 'See the open times and grab the one that suits you.'], ['03', 'Leave your details', 'Just your name and WhatsApp so we can confirm.'], ['04', 'Get your confirmation', 'We message you on WhatsApp with the location and details.']],
       faq: [['How do I book?', 'On our booking page you pick a service, day and time, then leave your name and WhatsApp. You can also message us directly on WhatsApp.'], ['Where are you located?', 'In Quintana Roo. We share the exact location on WhatsApp when we confirm your appointment.'], ['How much is keratin?', 'It depends on your hair length: from $500 MXN for short hair up to $2,000 MXN for long hair.'], ['How can I pay?', '[PAYMENT METHODS: cash, transfer, card…]'], ['Can I change or cancel?', 'Yes, just let us know on WhatsApp. [CANCELLATION POLICY]']],
       bEyebrow: 'Book', bH1a: 'Reserve your', bH1b: 'moment.', progressAria: 'Booking progress',

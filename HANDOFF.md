@@ -72,12 +72,12 @@ discount:  '[X]'                             // ← first-visit % off, not decid
 - All copy lives in `KV.T.es` / `KV.T.en` in site.js. Elements use `data-t="key"`, `data-t-ph` for placeholders, `data-t-aria` for aria-labels.
 - Note: Chrome may auto-translate the Spanish page for English-language users (DJ saw "IS/IN" instead of "ES/EN"). Optional fix: add `translate="no"` on `<html>` or `<meta name="google" content="notranslate">`.
 
-### Prices (what she told DJ)
-- Keratina: **$500 MXN short hair, up to $2,000 MXN long hair**
-- Laminado de cejas: **$150 MXN** ("solo es el lift, el planchado")
-- Pestañas: she has "muchos precios" (several options). Site shows Clásicas / Volumen / Retoque with `$[PRECIO]` placeholders
-- Faciales: `$[PRECIO]` placeholder
-Prices appear in two places in site.js per language: `services[].prices` (landing cards) and `bookOpts` (booking page). Update both.
+### Prices (her official list, received 2026-10-19), MXN
+Defined once at the top of site.js (LASH_*, BROW_*, FACIAL_*), used by both the landing cards and the booking page.
+- Pestañas: Clásicas 500 · Rímel 550 · Tecnológicas 3D/5D 600 · Efecto Aura 600 · Efecto hawaiano 600 · Volumen 8D 650 · Efecto delineado 650 · Efecto wispy 700 · Lifting de pestañas 350 · Retoque 450 · Retiro 100
+- Cejas: Laminado 150 · Laminado + limpieza 200 · Limpieza y perfilación: Consultar
+- Faciales: Limpieza profunda 500 · Control acné 600 · Detox 600 · Profunda premium 650 · Hidratante 650
+- Keratina: still the earlier rough range, desde 500 (corto) hasta 2,000 (largo); not on her list, confirm.
 
 ### Other placeholders still on the site
 Reviews carousel (`revText`, `revWho`): fake placeholder cards, replace with real client reviews. FAQ: payment methods, cancellation policy. Offer banner: discount % and terms.
