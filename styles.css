@@ -132,4 +132,12 @@ header.nav nav{max-width:1240px;margin:0 auto;padding:14px 20px;display:flex;fle
 .wa-float{position:fixed;right:20px;bottom:20px;z-index:30;width:60px;height:60px;border-radius:50%;background:#F2C9CC;color:#2A1B1E;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px -10px rgba(0,0,0,.5);transition:transform .35s}
 .wa-float:hover{transform:translateY(-3px) scale(1.05);color:#2A1B1E}
 @media (max-width:760px){.hide-sm{display:none !important}}
+@media (max-width:480px){
+  header.nav nav{padding:10px 14px;gap:8px;flex-wrap:nowrap}
+  .brand{gap:8px}
+  .brand img{width:34px;height:34px}
+  .brand span{font-size:19px;letter-spacing:.1em}
+  .lang button{min-width:32px;min-height:34px;font-size:12px}
+  header.nav .btn{padding:0 14px !important;min-height:40px !important;font-size:13px !important}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}.kv-reveal{opacity:1;transform:none}}
