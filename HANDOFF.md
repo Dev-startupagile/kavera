@@ -81,7 +81,7 @@ Defined once at the top of site.js (LASH_*, BROW_*, FACIAL_*), used by both the 
 - Keratina: still the earlier rough range, desde 500 (corto) hasta 2,000 (largo); not on her list, confirm.
 
 ### Other placeholders still on the site
-Reviews carousel (`revText`, `revWho`): fake placeholder cards, replace with real client reviews. FAQ: payment methods, cancellation policy. Offer banner: discount % and terms.
+FAQ: payment methods, cancellation policy. **Removed 2026-10-28 (DJ):** the placeholder reviews section and the first-visit discount banner (she doesn't offer a discount). Reviews will come later, collected on **Google** (not on the site) after each session.
 
 ---
 
