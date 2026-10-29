@@ -1,3 +1,4 @@
+import { guides } from './guides.mjs';
 // Copy for the Playa del Carmen landing pages. Prices come from site.js (single source of truth).
 // Keep claims modest: no medical promises, no exact address (studio is private; location shared on WhatsApp).
 
@@ -291,5 +292,6 @@ export const pages = [
       ['How long does it last?', 'Several weeks, depending on your hair type and aftercare.'],
       ['How do I book?', 'Online at kavera.mx/reservar or on WhatsApp at +52 984 131 8637.']
     ]
-  }
+  },
+  ...guides
 ];

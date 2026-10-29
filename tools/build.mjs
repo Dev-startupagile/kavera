@@ -73,7 +73,8 @@ function renderPage(pg) {
   const es = pg.lang === 'es';
   const main = svcData(pg.lang, pg.service);
   const tables = pg.tables === 'all' ? T[pg.lang].services.map(priceTable).join('') : priceTable(main);
-  const others = pages.filter((o) => o.slug !== pg.slug && o.lang === pg.lang);
+  const others = pages.filter((o) => o.slug !== pg.slug && o.lang === pg.lang && o.kind !== 'guide');
+  const related = pages.filter((o) => o.slug !== pg.slug && o.lang === pg.lang && o.kind === 'guide' && o.service === pg.service).slice(0, 4);
   const book = `/reservar?s=${pg.service}${es ? '' : '&lang=en'}`;
   const waText = es ? `Hola Kavéra, me interesa: ${main.name}. ¿Qué horarios tienes?` : `Hi Kavéra, I'm interested in ${main.name.toLowerCase()}. What times do you have?`;
   const alt = pg.alt || null;
@@ -167,6 +168,7 @@ ${pg.faq.map(([q, a]) => `    <details><summary>${esc(q)}<span class="kv-plus" a
     <a class="btn btn-outline" href="${WA(waText)}" target="_blank" rel="noopener">${es ? 'Escríbenos por WhatsApp' : 'Message us on WhatsApp'}</a>
   </div>
   <p style="margin-top:18px"><a href="/#promociones" style="text-decoration:underline">${es ? '✦ Recibe promociones por correo o WhatsApp' : '✦ Get promotions by email or WhatsApp'}</a></p>
+  ${related.length ? `<h2>${es ? 'Guías relacionadas' : 'Related guides'}</h2>\n  <div class="more">${related.map((o) => `<a href="/${o.slug}">${esc(o.h1)}</a>`).join('')}<a href="/guias">${es ? 'Todas las guías →' : 'All guides →'}</a></div>` : ''}
   ${others.length ? `<h2>${es ? 'Otros servicios en Playa del Carmen' : 'More'}</h2>\n  <div class="more">${others.map((o) => `<a href="/${o.slug}">${esc(o.h1)}</a>`).join('')}${alt ? `<a href="/${alt}" hreflang="${es ? 'en' : 'es'}">${es ? 'English' : 'Español'}</a>` : ''}</div>` : (alt ? `<div class="more"><a href="/${alt}" hreflang="es">Español</a></div>` : '')}
 </main>
 <footer style="border-top:1px solid rgba(243,230,216,.14);padding:40px 20px">
@@ -187,7 +189,7 @@ let index = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const homeFaq = T.es.faq;
 const homeLd = `<!--SEO-JSONLD-->${ldScript([business, { '@type': 'WebSite', '@id': SITE + '/#site', url: SITE + '/', name: 'Kavéra Aesthetics', inLanguage: ['es-MX', 'en'] }, faqLd(homeFaq, SITE + '/')])}<!--/SEO-JSONLD-->`;
 index = index.includes('<!--SEO-JSONLD-->') ? index.replace(/<!--SEO-JSONLD-->[\s\S]*?<!--\/SEO-JSONLD-->/, homeLd) : index.replace('</head>', homeLd + '\n</head>');
-const links = `<!--SEO-LINKS--><nav aria-label="Servicios en Playa del Carmen" class="wrap" style="display:flex;flex-wrap:wrap;gap:8px 18px;margin:26px auto 0;font-size:13px;color:#A99C8E">${pages.map((p) => `<a href="/${p.slug}" style="color:#CFC1B1">${esc(p.h1)}</a>`).join('')}</nav><!--/SEO-LINKS-->`;
+const links = `<!--SEO-LINKS--><nav aria-label="Servicios en Playa del Carmen" class="wrap" style="display:flex;flex-wrap:wrap;gap:8px 18px;margin:26px auto 0;font-size:13px;color:#A99C8E">${pages.filter((p) => p.kind !== 'guide').map((p) => `<a href="/${p.slug}" style="color:#CFC1B1">${esc(p.h1)}</a>`).join('')}<a href="/guias" style="color:#F2C9CC">Guías y consejos de belleza</a></nav><!--/SEO-LINKS-->`;
 index = index.includes('<!--SEO-LINKS-->') ? index.replace(/<!--SEO-LINKS-->[\s\S]*?<!--\/SEO-LINKS-->/, links) : index.replace('</footer>', links + '\n</footer>');
 
 const igPosts = (CONFIG.instagramPosts || []);
@@ -244,6 +246,53 @@ index = index.replace('<!-- TREATMENT SCENES -->', igSection + '\n\n<!-- TREATME
 fs.writeFileSync(path.join(ROOT, 'index.html'), index);
 
 
+
+// ---- guides hub (/guias) ----
+{
+  const gs = pages.filter((p) => p.kind === 'guide');
+  const url = SITE + '/guias';
+  const card = (g) => `<a class="guide-card" href="/${g.slug}"><span class="k">${esc(g.kicker)}</span><h2>${esc(g.h1)}</h2><p>${esc(g.description)}</p><span class="go">${g.lang === 'es' ? 'Leer guía →' : 'Read guide →'}</span></a>`;
+  fs.writeFileSync(path.join(ROOT, 'guias.html'), `<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guías de pestañas, keratina, cejas y faciales en Playa del Carmen | Kavéra</title>
+<meta name="description" content="Guías y consejos de belleza de Kavéra Aesthetics, Playa del Carmen: extensiones de pestañas, lifting, keratina, laminado de cejas y faciales con el clima del Caribe.">
+<link rel="canonical" href="${url}">
+<meta property="og:title" content="Guías de belleza · Kavéra Aesthetics Playa del Carmen">
+<meta property="og:image" content="${SITE}/og.jpg">
+<meta property="og:url" content="${url}">
+<link rel="icon" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.lp{max-width:1100px;margin:0 auto;padding:56px 20px 80px}.lp h1{font-size:clamp(40px,7vw,68px);line-height:1.02;margin:0 0 18px}
+.lp .intro{font-size:18px;line-height:1.7;color:#E9DCCD;font-weight:300;max-width:720px;margin:0 0 40px}
+.guides{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.guide-card{display:flex;flex-direction:column;gap:10px;padding:26px 24px;border-radius:24px;background:rgba(243,230,216,.05);border:1px solid rgba(243,230,216,.14);color:#F3E6D8;transition:transform .4s,border-color .4s}
+.guide-card:hover{transform:translateY(-6px);border-color:rgba(242,201,204,.5);color:#F3E6D8}
+.guide-card .k{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#F2C9CC}
+.guide-card h2{font-size:28px;line-height:1.1;margin:0}.guide-card p{margin:0;font-size:14px;line-height:1.6;color:#CFC1B1;flex-grow:1}.guide-card .go{font-size:13px;color:#F2C9CC}
+</style>
+${ldScript([business, { '@type': 'CollectionPage', '@id': url, url, name: 'Guías de belleza Kavéra', inLanguage: 'es-MX', isPartOf: { '@id': SITE + '/#site' },
+  mainEntity: { '@type': 'ItemList', itemListElement: gs.map((g, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}/${g.slug}`, name: strip(g.h1) })) } }])}
+</head>
+<body>
+<header class="nav"><nav><a href="/" class="brand"><img src="/logo.jpg" alt="Kavéra Aesthetics"><span>KAVÉRA</span></a><a class="btn btn-pink" href="/reservar" style="min-height:44px;padding:0 20px;font-size:14px">Reservar</a></nav></header>
+<main class="lp">
+  <p class="eyebrow">Guías · Playa del Carmen</p>
+  <h1>Guías y consejos de belleza</h1>
+  <p class="intro">Respuestas claras a lo que más nos preguntan en Kavéra Aesthetics: pestañas, lifting, keratina, cejas y faciales, pensadas para el calor, la playa y la humedad de Playa del Carmen. Por Karen Valero, cosmetóloga y lash artist.</p>
+  <div class="guides">${gs.map(card).join('')}</div>
+  <p style="margin-top:40px"><a class="btn btn-pink" href="/reservar">Agendar cita</a> <a class="btn btn-outline" href="/#promociones" style="margin-left:8px">Recibir promociones</a></p>
+</main>
+<footer style="border-top:1px solid rgba(243,230,216,.14);padding:40px 20px"><div class="wrap" style="font-size:14px;color:#CFC1B1">© ${TODAY.slice(0, 4)} Kavéra Aesthetics · Playa del Carmen · <a href="/">kavera.mx</a></div></footer>
+</body>
+</html>
+`);
+}
+
 // ---- aviso de privacidad ----
 fs.writeFileSync(path.join(ROOT, 'privacidad.html'), `<!doctype html>
 <html lang="es">
@@ -283,7 +332,7 @@ fs.writeFileSync(path.join(ROOT, 'privacidad.html'), `<!doctype html>
 `);
 
 // ---- sitemap, robots, llms.txt ----
-const urls = ['/', '/reservar', ...pages.map((p) => '/' + p.slug), '/privacidad'];
+const urls = ['/', '/reservar', '/guias', ...pages.map((p) => '/' + p.slug), '/privacidad'];
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => `  <url><loc>${SITE}${u === '/' ? '/' : u}</loc><lastmod>${TODAY}</lastmod></url>`).join('\n')}

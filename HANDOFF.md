@@ -159,6 +159,10 @@ Goal: be the answer when someone in Playa del Carmen searches (Google, ChatGPT, 
 - **IndexNow** (instant indexing for Bing, which feeds ChatGPT search/Copilot): key file /91a3a34391937d9c208ce7a1cc3b861f.txt. After publishing changes, ping: https://api.indexnow.org/indexnow?url=<page-url>&key=91a3a34391937d9c208ce7a1cc3b861f (one GET per changed URL).
 - Next SEO steps (need DJ's logins): verify kavera.mx in **Google Search Console** and **Bing Webmaster Tools** (Bing feeds ChatGPT search) via a DNS TXT record in Namecheap, submit sitemap. Get listed/mentioned on local pages (partners' sites, Playa expat groups, directories). Instagram bio link to kavera.mx. Google Business Profile postponed until permanent studio.
 
+## 8d-2. Content (2026-10-29)
+- 9 more guides in tools/guides.mjs (lash duration, lifting vs extensions, keratina vs botox capilar, keratina at beach/pool, brides & XV, brow lamination, facials in the heat, first time with extensions, English expat guide). Hub page /guias lists all guides; service pages show 'Guías relacionadas'. Site now 23 URLs in sitemap.
+- To add a guide: append to tools/guides.mjs (kind: 'guide', service, faq…), run `node tools/build.mjs`, push, then IndexNow-ping the new URL.
+
 ## 8e. Subscribers + Instagram (2026-10-28)
 - **Subscribe form** on the homepage (#promociones): name, email, WhatsApp, separate opt-ins for email and WhatsApp promos, link to /privacidad. Posts to **/api/subscribe** (Vercel function in api/subscribe.js) → **Brevo** (free plan: 100k contacts, 300 emails/day).
 - **To switch it on:** create a free Brevo account (Karen's or SA's), make two lists ("Promos email", "Promos WhatsApp"), then in Vercel → kavera project → Settings → Environment Variables add BREVO_API_KEY, BREVO_LIST_EMAIL, BREVO_LIST_WHATSAPP (list ids) and redeploy. Until then, sign-ups open WhatsApp to Karen with the person's details (nothing lost).
