@@ -42,6 +42,7 @@ const business = {
   address: { '@type': 'PostalAddress', addressLocality: 'Playa del Carmen', addressRegion: 'Quintana Roo', addressCountry: 'MX' },
   areaServed: [{ '@type': 'City', name: 'Playa del Carmen' }, { '@type': 'AdministrativeArea', name: 'Solidaridad, Quintana Roo' }],
   knowsLanguage: ['es', 'en'],
+  sameAs: [CONFIG.instagram],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Servicios Kavéra',
@@ -169,7 +170,7 @@ ${pg.faq.map(([q, a]) => `    <details><summary>${esc(q)}<span class="kv-plus" a
 <footer style="border-top:1px solid rgba(243,230,216,.14);padding:40px 20px">
   <div class="wrap" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:14px;color:#CFC1B1">
     <span>© ${TODAY.slice(0, 4)} Kavéra Aesthetics · Playa del Carmen, Quintana Roo</span>
-    <span><a href="/">kavera.mx</a> · <a href="mailto:hola@kavera.mx">hola@kavera.mx</a></span>
+    <span><a href="/">kavera.mx</a> · <a href="${CONFIG.instagram}" target="_blank" rel="noopener">Instagram @kavera.aesthetics</a> · <a href="mailto:hola@kavera.mx">hola@kavera.mx</a></span>
   </div>
 </footer>
 <a class="wa-float kv-pulse" href="${WA(waText)}" target="_blank" rel="noopener" aria-label="WhatsApp"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 19.6L3 21z"></path></svg></a>
@@ -237,6 +238,7 @@ ${pages.map((p) => `- [${strip(p.h1)}](${SITE}/${p.slug}): ${p.description}`).jo
 ## Contact
 - WhatsApp: ${PHONE} (https://wa.me/${CONFIG.whatsapp})
 - Email: hola@kavera.mx
+- Instagram: ${CONFIG.instagram}
 - Area: Playa del Carmen, Quintana Roo, Mexico
 `);
 
