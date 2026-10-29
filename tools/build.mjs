@@ -271,6 +271,16 @@ ${pages.map((p) => `- [${strip(p.h1)}](${SITE}/${p.slug}): ${p.description}`).jo
 - Area: Playa del Carmen, Quintana Roo, Mexico
 `);
 
+// ---- cache-busting: version the CSS/JS links so browsers always get the latest ----
+import crypto from 'node:crypto';
+const ver = (f) => crypto.createHash('md5').update(fs.readFileSync(path.join(ROOT, f))).digest('hex').slice(0, 8);
+const V = { 'styles.css': ver('styles.css'), 'site.js': ver('site.js') };
+for (const f of fs.readdirSync(ROOT).filter((f) => f.endsWith('.html'))) {
+  const fp = path.join(ROOT, f); let h = fs.readFileSync(fp, 'utf8');
+  h = h.replace(/(href|src)="\/(styles\.css|site\.js)(\?v=[a-f0-9]+)?"/g, (m, a, file) => `${a}="/${file}?v=${V[file]}"`);
+  fs.writeFileSync(fp, h);
+}
+
 // ---- prerender index.html and reservar.html (Spanish) ----
 import { createRequire } from 'node:module';
 let chromium = null; try { ({ chromium } = createRequire(import.meta.url)('playwright')); } catch (e) {}
