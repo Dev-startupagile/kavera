@@ -32,7 +32,7 @@ const business = {
   '@id': SITE + '/#business',
   name: 'Kavéra Aesthetics',
   url: SITE + '/',
-  image: SITE + '/logo.jpg',
+  image: [SITE + '/og.jpg', SITE + '/logo.jpg'],
   logo: SITE + '/logo.jpg',
   telephone: PHONE,
   email: 'hola@kavera.mx',
@@ -70,12 +70,16 @@ function renderPage(pg) {
   const url = `${SITE}/${pg.slug}`;
   const es = pg.lang === 'es';
   const main = svcData(pg.lang, pg.service);
-  const tables = es ? priceTable(main) : T.en.services.map(priceTable).join('');
+  const tables = pg.tables === 'all' ? T[pg.lang].services.map(priceTable).join('') : priceTable(main);
   const others = pages.filter((o) => o.slug !== pg.slug && o.lang === pg.lang);
   const book = `/reservar?s=${pg.service}${es ? '' : '&lang=en'}`;
   const waText = es ? `Hola Kavéra, me interesa: ${main.name}. ¿Qué horarios tienes?` : `Hi Kavéra, I'm interested in ${main.name.toLowerCase()}. What times do you have?`;
-  const alt = pg.slug === 'pestanas-playa-del-carmen' ? 'eyelash-extensions-playa-del-carmen' : pg.slug === 'eyelash-extensions-playa-del-carmen' ? 'pestanas-playa-del-carmen' : null;
-  const service = {
+  const alt = pg.alt || null;
+  const service = pg.kind === 'guide' ? {
+    '@type': 'Article', '@id': url + '#article', headline: strip(pg.h1), description: pg.description, inLanguage: es ? 'es-MX' : 'en',
+    datePublished: pg.published || TODAY, dateModified: TODAY, image: SITE + '/og.jpg', url,
+    author: { '@id': SITE + '/#business' }, publisher: { '@id': SITE + '/#business' }, about: { '@type': 'Thing', name: main.name }
+  } : {
     '@type': 'Service', '@id': url + '#service', name: strip(pg.h1), serviceType: main.name, url,
     provider: { '@id': SITE + '/#business' }, areaServed: { '@type': 'City', name: 'Playa del Carmen' },
     offers: main.prices.filter((p) => num(p[1])).map((p) => ({ '@type': 'Offer', name: p[0], price: num(p[1]), priceCurrency: 'MXN' }))
@@ -94,7 +98,10 @@ function renderPage(pg) {
 ${alt ? `<link rel="alternate" hreflang="${pg.lang}" href="${url}">\n<link rel="alternate" hreflang="${es ? 'en' : 'es'}" href="${SITE}/${alt}">` : ''}
 <meta property="og:title" content="${esc(pg.title)}">
 <meta property="og:description" content="${esc(pg.description)}">
-<meta property="og:image" content="${SITE}/logo.jpg">
+<meta property="og:image" content="${SITE}/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:url" content="${url}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="${es ? 'es_MX' : 'en_US'}">
@@ -224,11 +231,7 @@ Estudio privado de belleza en Playa del Carmen, Quintana Roo, México: extension
 ${T.es.services.map(line).join('\n')}
 
 ## Pages
-- [Extensiones de pestañas en Playa del Carmen](${SITE}/pestanas-playa-del-carmen): estilos, precios, retoques, cuidados
-- [Keratina en Playa del Carmen](${SITE}/keratina-playa-del-carmen): precio según el largo, cuidados
-- [Laminado de cejas en Playa del Carmen](${SITE}/laminado-de-cejas-playa-del-carmen)
-- [Faciales en Playa del Carmen](${SITE}/faciales-playa-del-carmen)
-- [Eyelash extensions in Playa del Carmen (English)](${SITE}/eyelash-extensions-playa-del-carmen)
+${pages.map((p) => `- [${strip(p.h1)}](${SITE}/${p.slug}): ${p.description}`).join('\n')}
 - [Reservar / Book](${SITE}/reservar): choose service, day and time; confirmation by WhatsApp
 
 ## Contact

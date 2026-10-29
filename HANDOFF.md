@@ -155,6 +155,8 @@ Goal: be the answer when someone in Playa del Carmen searches (Google, ChatGPT, 
 - **Structured data (JSON-LD):** BeautySalon (no street address; locality Playa del Carmen), services + MXN prices, FAQPage, BreadcrumbList.
 - **robots.txt** allows all crawlers incl. GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended. **sitemap.xml**, **llms.txt** (plain summary for AI assistants).
 - **RULE: after changing prices/text in site.js or copy in tools/pages.mjs, run `node tools/build.mjs`** (needs Playwright), then commit and push. Rebuild is idempotent.
+- Added 2026-10-28 (round 2): /precios, /lifting-de-pestanas-playa-del-carmen, /guia-tipos-de-pestanas, /cuidados-extensiones-de-pestanas, /keratin-treatment-playa-del-carmen; share image og.jpg (1200x630); 404.html; caching headers in vercel.json; removed unused logo.png.
+- **IndexNow** (instant indexing for Bing, which feeds ChatGPT search/Copilot): key file /91a3a34391937d9c208ce7a1cc3b861f.txt. After publishing changes, ping: https://api.indexnow.org/indexnow?url=<page-url>&key=91a3a34391937d9c208ce7a1cc3b861f (one GET per changed URL).
 - Next SEO steps (need DJ's logins): verify kavera.mx in **Google Search Console** and **Bing Webmaster Tools** (Bing feeds ChatGPT search) via a DNS TXT record in Namecheap, submit sitemap. Get listed/mentioned on local pages (partners' sites, Playa expat groups, directories). Instagram bio link to kavera.mx. Google Business Profile postponed until permanent studio.
 
 ## 9. AI booking agent, plan (not built yet)
