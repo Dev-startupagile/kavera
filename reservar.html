@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="es">
-<head>
+<html lang="es"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reservar · Kavéra Aesthetics</title>
-<meta name="description" content="Agenda tu cita en Kavéra Aesthetics: pestañas, faciales, keratina y cejas en Quintana Roo.">
+<title>Reservar cita · Kavéra Aesthetics · Playa del Carmen</title>
+<link rel="canonical" href="https://www.kavera.mx/reservar">
+<meta name="description" content="Agenda tu cita en Kavéra Aesthetics, Playa del Carmen: extensiones de pestañas, lifting, laminado de cejas, keratina y faciales. Elige servicio, día y hora.">
 <meta name="theme-color" content="#1E2A1D">
 <link rel="icon" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 <style>
 .choice{text-align:left;color:#2E2224;border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:8px;min-height:44px;background:#FFFAF6;border:2px solid rgba(154,79,92,.12)}
@@ -42,24 +42,45 @@
   <header style="position:relative;z-index:2;border-bottom:1px solid rgba(243,230,216,.12)">
     <nav class="wrap" style="padding:14px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
       <a href="/" class="brand"><span aria-hidden="true" style="font-size:20px;font-family:'Jost'">←</span><img src="/logo.jpg" alt=""><span>KAVÉRA</span></a>
-      <div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div>
+      <div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" aria-pressed="true">ES</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
     </nav>
   </header>
 
   <main class="wrap" style="position:relative;z-index:1;padding:48px 20px 90px">
     <div class="kv-in" style="max-width:720px;margin-bottom:36px">
-      <p class="eyebrow" style="margin-bottom:12px" data-t="bEyebrow"></p>
-      <h1 style="font-size:clamp(42px,6vw,76px);line-height:1"><span data-t="bH1a"></span> <em class="kv-shimmer" data-t="bH1b"></em></h1>
+      <p class="eyebrow" style="margin-bottom:12px" data-t="bEyebrow">Reservar</p>
+      <h1 style="font-size:clamp(42px,6vw,76px);line-height:1"><span data-t="bH1a">Aparta tu</span> <em class="kv-shimmer" data-t="bH1b">momento.</em></h1>
     </div>
 
-    <div data-t-aria="progressAria" role="group" style="margin:0 0 34px;position:relative">
+    <div data-t-aria="progressAria" role="group" style="margin:0 0 34px;position:relative" aria-label="Progreso de la reserva">
       <div aria-hidden="true" style="position:absolute;left:22px;right:22px;top:21px;height:2px;background:rgba(243,230,216,.15)"></div>
-      <div aria-hidden="true" id="bar" class="kv-bar" style="position:absolute;left:22px;top:21px;height:2px;background:linear-gradient(90deg,#7A3A47,#F2C9CC);width:0"></div>
-      <ol id="stepper" style="list-style:none;margin:0;padding:0;position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px"></ol>
+      <div aria-hidden="true" id="bar" class="kv-bar" style="position: absolute; left: 22px; top: 21px; height: 2px; background: linear-gradient(90deg, rgb(122, 58, 71), rgb(242, 201, 204)); width: calc(0% + 0px);"></div>
+      <ol id="stepper" style="list-style:none;margin:0;padding:0;position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px"><li style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><span class="dot cur">1</span><span style="font-size:13px;letter-spacing:.08em;color:#F3E6D8">Servicio</span></li><li style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><span class="dot ">2</span><span style="font-size:13px;letter-spacing:.08em;color:#A99C8E">Día y hora</span></li><li style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><span class="dot ">3</span><span style="font-size:13px;letter-spacing:.08em;color:#A99C8E">Tus datos</span></li><li style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><span class="dot ">4</span><span style="font-size:13px;letter-spacing:.08em;color:#A99C8E">Confirmar</span></li></ol>
     </div>
 
     <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start">
-      <section id="panel" style="flex:999 1 560px;min-width:0;border-radius:34px;background:#F6ECE3;color:#2E2224;padding:38px 34px;box-shadow:0 60px 120px -60px rgba(0,0,0,.7)"></section>
+      <section id="panel" style="flex:999 1 560px;min-width:0;border-radius:34px;background:#F6ECE3;color:#2E2224;padding:38px 34px;box-shadow:0 60px 120px -60px rgba(0,0,0,.7)"><div class="kv-in" style="display:flex;flex-direction:column;gap:22px">
+        <h2 style="font-weight:600;font-size:36px">¿Qué te gustaría hacerte?</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+          <button type="button" class="choice kv-choice" data-svc="lashes" aria-pressed="false">
+            <span aria-hidden="true" class="serif" style="width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(140deg,#F2C9CC,#E8A9B2);color:#2A1B1E;font-style:italic;font-size:22px">i</span>
+            <span class="serif" style="font-weight:600;font-size:26px;line-height:1.05">Pestañas</span>
+            <span style="font-size:13px;color:#6A585B">Extensiones, efectos y lifting</span></button><button type="button" class="choice kv-choice" data-svc="facials" aria-pressed="false">
+            <span aria-hidden="true" class="serif" style="width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(140deg,#F2C9CC,#E8A9B2);color:#2A1B1E;font-style:italic;font-size:22px">ii</span>
+            <span class="serif" style="font-weight:600;font-size:26px;line-height:1.05">Faciales</span>
+            <span style="font-size:13px;color:#6A585B">Limpieza, detox e hidratación</span></button><button type="button" class="choice kv-choice" data-svc="keratin" aria-pressed="false">
+            <span aria-hidden="true" class="serif" style="width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(140deg,#F2C9CC,#E8A9B2);color:#2A1B1E;font-style:italic;font-size:22px">iii</span>
+            <span class="serif" style="font-weight:600;font-size:26px;line-height:1.05">Keratina</span>
+            <span style="font-size:13px;color:#6A585B">Precio según largo</span></button><button type="button" class="choice kv-choice" data-svc="brows" aria-pressed="false">
+            <span aria-hidden="true" class="serif" style="width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(140deg,#F2C9CC,#E8A9B2);color:#2A1B1E;font-style:italic;font-size:22px">iv</span>
+            <span class="serif" style="font-weight:600;font-size:26px;line-height:1.05">Laminado de cejas</span>
+            <span style="font-size:13px;color:#6A585B">Lifting y planchado</span></button>
+        </div>
+        
+      </div><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:30px;padding-top:22px;border-top:1px solid rgba(154,79,92,.15)">
+        <button type="button" id="back" class="back" style="visibility:hidden">← Atrás</button>
+        <button type="button" id="next" class="next kv-shine" disabled="">Continuar →</button>
+      </div></section>
 
       <aside style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:20px">
         <div style="border-radius:30px;padding:30px 26px;background:rgba(243,230,216,.06);border:1px solid rgba(243,230,216,.16)">
@@ -68,16 +89,16 @@
               <div aria-hidden="true" class="kv-rotate" style="position:absolute;inset:-6px;border-radius:50%;border:1px dashed rgba(242,201,204,.7)"></div>
               <img src="/logo.jpg" alt="" style="width:70px;height:70px;border-radius:50%;object-fit:cover;display:block">
             </div>
-            <div><div style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#F2C9CC" data-t="sumEyebrow"></div><div class="serif" style="font-size:26px">Kavéra Aesthetics</div></div>
+            <div><div style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#F2C9CC" data-t="sumEyebrow">Tu cita</div><div class="serif" style="font-size:26px">Kavéra Aesthetics</div></div>
           </div>
-          <div id="summary"></div>
+          <div id="summary"><div class="row"><span style="color:#CFC1B1">Servicio</span><span style="text-align:right">—</span></div><div class="row"><span style="color:#CFC1B1">Opción</span><span style="text-align:right">—</span></div><div class="row"><span style="color:#CFC1B1">Precio</span><span style="text-align:right">—</span></div><div class="row"><span style="color:#CFC1B1">Día</span><span style="text-align:right">—</span></div><div class="row"><span style="color:#CFC1B1">Hora</span><span style="text-align:right">—</span></div></div>
         </div>
         <div style="border-radius:30px;padding:28px 26px;background:rgba(242,201,204,.08);border:1px solid rgba(242,201,204,.3)">
-          <h3 style="margin-bottom:14px;font-weight:600;font-size:24px" data-t="howTitle"></h3>
-          <ol id="how" style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.6;color:#E1D4C5"></ol>
+          <h3 style="margin-bottom:14px;font-weight:600;font-size:24px" data-t="howTitle">Tu cita en cuatro pasos.</h3>
+          <ol id="how" style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.6;color:#E1D4C5"><li>Elige tu servicio y la opción que quieres.</li><li>Escoge el día y la hora que te acomodan.</li><li>Déjanos tu nombre y WhatsApp.</li><li>Confirma: te escribimos para apartar tu lugar y enviarte la ubicación.</li></ol>
         </div>
-        <a id="help" href="#" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;min-height:56px;padding:0 22px;border-radius:999px;border:1px solid rgba(243,230,216,.3);color:#F3E6D8;font-size:15px">
-          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 19.6L3 21z"></path></svg><span data-t="help"></span>
+        <a id="help" href="https://wa.me/529841318637?text=Hola%20Kav%C3%A9ra%2C%20tengo%20una%20pregunta%20sobre%20las%20citas." target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;min-height:56px;padding:0 22px;border-radius:999px;border:1px solid rgba(243,230,216,.3);color:#F3E6D8;font-size:15px">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 19.6L3 21z"></path></svg><span data-t="help">¿Dudas? Escríbenos por WhatsApp</span>
         </a>
       </aside>
     </div>
@@ -212,5 +233,4 @@
   render();
 })();
 </script>
-</body>
-</html>
+</body></html>

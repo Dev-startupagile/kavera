@@ -148,6 +148,15 @@ Order: (1) WhatsApp number live, (2) Cal.com live, (3) then build automations an
 - First automations: refill reminder (day 14–18 after lashes), thank-you + review request (day 1), no-show/reschedule follow-up, Monday "lugares libres esta semana" to opted-in clients, birthday offer, quiz-lead email sequence, IG caption/Reel script drafts from her photos (she approves), weekly numbers report, later the inbound WhatsApp agent on the local model.
 - Rules: opt-in contacts only; WhatsApp sends slow and few (ban risk on an unofficial connection); a human approves anything sent to many people until it's proven; secrets only in env/config on the machines, never in the repo.
 
+## 8d. SEO / AI search (built 2026-10-28)
+Goal: be the answer when someone in Playa del Carmen searches (Google, ChatGPT, Claude, Perplexity) for pestañas, keratina, laminado de cejas, faciales.
+- **Prerendered text:** index.html and reservar.html now ship the Spanish text in the HTML (AI crawlers don't run JavaScript; before this they saw 31 words on the homepage, now 843). The JS still re-renders at runtime, so site.js stays the source of truth.
+- **Landing pages:** /pestanas-playa-del-carmen, /keratina-playa-del-carmen, /laminado-de-cejas-playa-del-carmen, /faciales-playa-del-carmen, /eyelash-extensions-playa-del-carmen (English). Copy lives in tools/pages.mjs; prices pulled from site.js.
+- **Structured data (JSON-LD):** BeautySalon (no street address; locality Playa del Carmen), services + MXN prices, FAQPage, BreadcrumbList.
+- **robots.txt** allows all crawlers incl. GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended. **sitemap.xml**, **llms.txt** (plain summary for AI assistants).
+- **RULE: after changing prices/text in site.js or copy in tools/pages.mjs, run `node tools/build.mjs`** (needs Playwright), then commit and push. Rebuild is idempotent.
+- Next SEO steps (need DJ's logins): verify kavera.mx in **Google Search Console** and **Bing Webmaster Tools** (Bing feeds ChatGPT search) via a DNS TXT record in Namecheap, submit sitemap. Get listed/mentioned on local pages (partners' sites, Playa expat groups, directories). Instagram bio link to kavera.mx. Google Business Profile postponed until permanent studio.
+
 ## 9. AI booking agent, plan (not built yet)
 
 ### Research 2026-10-16: recommended route = buy, don't build
