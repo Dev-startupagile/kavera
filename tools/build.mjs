@@ -190,15 +190,32 @@ const links = `<!--SEO-LINKS--><nav aria-label="Servicios en Playa del Carmen" c
 index = index.includes('<!--SEO-LINKS-->') ? index.replace(/<!--SEO-LINKS-->[\s\S]*?<!--\/SEO-LINKS-->/, links) : index.replace('</footer>', links + '\n</footer>');
 
 const igPosts = (CONFIG.instagramPosts || []);
-const igSection = `<!--IG-SECTION--><section id="instagram" aria-labelledby="ig-title" style="padding:100px 0 90px;overflow:hidden">
-  <div class="wrap kv-reveal" style="padding:0 20px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:36px">
-    <div><p class="eyebrow" data-t="igEyebrow">Instagram</p><h2 id="ig-title" style="font-size:clamp(38px,4.8vw,60px);line-height:1.04" data-t="igTitle">Nuestro trabajo, en vivo.</h2>
-    <p style="margin:12px 0 0;max-width:520px;font-size:16px;line-height:1.7;color:#D9CBBB" data-t="igSub">Pestañas, keratina y cejas reales de nuestras clientas en Playa del Carmen. Por Karen Valero, cosmetóloga y lash artist.</p></div>
-    <a class="btn btn-outline" href="${CONFIG.instagram}" target="_blank" rel="noopener"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor"></circle></svg><span>@kavera.aesthetics</span></a>
+const feat = CONFIG.featuredPost;
+const igEmbed = (p) => `<iframe src="https://www.instagram.com/${p}/embed/" title="Publicación de Instagram de @kavera.aesthetics" loading="lazy" allowtransparency="true" allowfullscreen="true" scrolling="no"></iframe>`;
+const featBlock = feat ? `
+  <div class="wrap feat">
+    <div class="feat-text kv-reveal">
+      <p class="eyebrow" data-t="featEyebrow">${esc(T.es.featEyebrow)}</p>
+      <h2 style="font-size:clamp(40px,5.4vw,68px);line-height:1.02" data-t="featTitle">${esc(T.es.featTitle)}</h2>
+      <p style="margin:18px 0 0;max-width:460px;font-size:17px;line-height:1.7;color:#D9CBBB" data-t="featSub">${esc(T.es.featSub)}</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
+        <a class="btn btn-pink kv-shine" href="/reservar"><span data-t="ctaBook">${esc(T.es.ctaBook)}</span></a>
+        <a class="btn btn-outline" href="${CONFIG.instagram}" target="_blank" rel="noopener"><span>@kavera.aesthetics</span></a>
+      </div>
+    </div>
+    <div class="feat-phone kv-float-soft"><div class="feat-screen">${igEmbed(feat)}</div></div>
+  </div>` : '';
+const igSection = `<!--IG-SECTION--><section id="instagram" aria-labelledby="ig-title" style="position:relative;padding:90px 0 80px;overflow:hidden">
+  <div aria-hidden="true" class="kv-glow" style="position:absolute;width:620px;height:620px;right:-180px;top:-120px;border-radius:50%;background:radial-gradient(circle,rgba(242,170,180,.30) 0%,rgba(242,170,180,0) 65%);pointer-events:none"></div>${featBlock}
+  <div class="wrap kv-reveal" style="position:relative;padding:0 20px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;margin:${feat ? '90px' : '0'} auto 30px">
+    <div><p class="eyebrow" data-t="igEyebrow">Instagram</p><h2 id="ig-title" style="font-size:clamp(34px,4.4vw,54px);line-height:1.04" data-t="igTitle">${esc(T.es.igTitle)}</h2>
+    <p style="margin:12px 0 0;max-width:520px;font-size:16px;line-height:1.7;color:#D9CBBB" data-t="igSub">${esc(T.es.igSub)}</p></div>
+    <a class="btn btn-outline" href="${CONFIG.instagram}" target="_blank" rel="noopener"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor"></circle></svg><span data-t="igFollow">${esc(T.es.igFollow)}</span></a>
   </div>
-  <div class="ig-row">${igPosts.map((p) => `<div class="ig-item"><iframe src="https://www.instagram.com/${p}/embed/" title="Publicación de Instagram de @kavera.aesthetics" loading="lazy" allowtransparency="true" allowfullscreen="true" scrolling="no"></iframe></div>`).join('')}</div>
+  <div class="ig-row">${igPosts.map((p) => `<div class="ig-item">${igEmbed(p)}</div>`).join('')}</div>
 </section><!--/IG-SECTION-->`;
-index = index.includes('<!--IG-SECTION-->') ? index.replace(/<!--IG-SECTION-->[\s\S]*?<!--\/IG-SECTION-->/, igSection) : index.replace('<!-- REVIEWS -->', igSection + '\n\n<!-- REVIEWS -->');
+index = index.replace(/<!--IG-SECTION-->[\s\S]*?<!--\/IG-SECTION-->\s*/, '');
+index = index.replace('<!-- TREATMENT SCENES -->', igSection + '\n\n<!-- TREATMENT SCENES -->');
 fs.writeFileSync(path.join(ROOT, 'index.html'), index);
 
 // ---- sitemap, robots, llms.txt ----
