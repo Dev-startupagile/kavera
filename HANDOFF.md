@@ -60,13 +60,13 @@ README.md, HANDOFF.md
 
 ### CONFIG (top of site.js): fill these in
 ```js
-whatsapp:  '52XXXXXXXXXX'                    // ← PLACEHOLDER. Digits only, 52 + 10-digit number
+whatsapp:  '529841318637'                    // +52 984 131 8637 (live)
 calendly:  'https://calendly.com/YOUR-LINK'  // ← PLACEHOLDER
 instagram: 'https://instagram.com/'          // ← PLACEHOLDER
 hours:     ['10:00','11:30','13:00','15:00','16:30','18:00']  // ← guessed, confirm with her
 discount:  '[X]'                             // ← first-visit % off, not decided
 ```
-**Until `whatsapp` is a real number, every WhatsApp button on the live site is broken.** This is the #1 open item.
+**WhatsApp is set: +52 984 131 8637 (added 2026-10-28).**
 
 ### Language
 - Default is **always Spanish**. English only if the visitor taps EN (remembered in localStorage) or the URL has `?lang=en`. Browser language is deliberately ignored (DJ's request 2026-10-16).

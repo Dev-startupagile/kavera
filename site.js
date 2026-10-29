@@ -2,7 +2,7 @@
 window.KV = (function () {
   // ===== EDIT THESE =====
   const CONFIG = {
-    whatsapp: '52XXXXXXXXXX',                 // country code + number, digits only (e.g. 529841234567)
+    whatsapp: '529841318637',                 // Kavéra WhatsApp: +52 984 131 8637
     calendly: 'https://calendly.com/YOUR-LINK',
     instagram: 'https://instagram.com/',
     hours: ['10:00', '11:30', '13:00', '15:00', '16:30', '18:00'],
