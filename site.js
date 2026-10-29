@@ -5,6 +5,8 @@ window.KV = (function () {
     whatsapp: '529841318637',                 // Kavéra WhatsApp: +52 984 131 8637
     calendly: 'https://calendly.com/YOUR-LINK',
     instagram: 'https://www.instagram.com/kavera.aesthetics/',
+    // Instagram posts shown on the homepage (newest first). Copy the code from the post link: instagram.com/reel/<CODE>/
+    instagramPosts: ['reel/DZT5zoLN5dT', 'reel/DZJqM9QN-wq', 'reel/DYtJ3s2NNWG', 'reel/DYku_VERDLT', 'reel/DWR4cnuAZBQ', 'p/DeksOWnx7z4'],
     hours: ['10:00', '11:30', '13:00', '15:00', '16:30', '18:00'],
     discount: '[X]'
   };
@@ -39,6 +41,7 @@ window.KV = (function () {
       bookThis: 'Reservar',
       howEyebrow: 'Cómo reservar', howTitle: 'Tu cita en cuatro pasos.',
       offerEyebrow: 'Primera visita', offerTitle: '% de descuento en tu primera cita', offerSub: 'Menciónalo al reservar. [CONDICIONES]', offerBtn: 'Quiero mi descuento',
+      igEyebrow: 'Instagram', igTitle: 'Nuestro trabajo, en vivo.', igSub: 'Pestañas, keratina y cejas reales de nuestras clientas en Playa del Carmen. Por Karen Valero, cosmetóloga y lash artist.',
       revEyebrow: 'Clientas felices', revTitle: 'Lo que dicen de Kavéra.', revText: '[Pega aquí una reseña real de una clienta]', revWho: '[Nombre]',
       faqEyebrow: 'Preguntas frecuentes', faqTitle: 'Todo lo que quieres saber.',
       bookEyebrow: 'Reserva', bookTitle: 'Aparta tu momento.',
@@ -93,6 +96,7 @@ window.KV = (function () {
       bookThis: 'Book',
       howEyebrow: 'How to book', howTitle: 'Your appointment in four steps.',
       offerEyebrow: 'First visit', offerTitle: '% off your first appointment', offerSub: 'Mention it when you book. [TERMS]', offerBtn: 'Claim my discount',
+      igEyebrow: 'Instagram', igTitle: 'Our work, live.', igSub: 'Real lashes, keratin and brows from our clients in Playa del Carmen. By Karen Valero, cosmetologist and lash artist.',
       revEyebrow: 'Happy clients', revTitle: 'What they say about Kavéra.', revText: '[Paste a real client review here]', revWho: '[Name]',
       faqEyebrow: 'FAQ', faqTitle: 'Everything you want to know.',
       bookEyebrow: 'Booking', bookTitle: 'Reserve your moment.',

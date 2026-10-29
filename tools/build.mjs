@@ -43,6 +43,7 @@ const business = {
   areaServed: [{ '@type': 'City', name: 'Playa del Carmen' }, { '@type': 'AdministrativeArea', name: 'Solidaridad, Quintana Roo' }],
   knowsLanguage: ['es', 'en'],
   sameAs: [CONFIG.instagram],
+  founder: { '@type': 'Person', name: 'Karen Valero', jobTitle: 'Cosmetóloga y lash artist', sameAs: [CONFIG.instagram] },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Servicios Kavéra',
@@ -187,6 +188,17 @@ const homeLd = `<!--SEO-JSONLD-->${ldScript([business, { '@type': 'WebSite', '@i
 index = index.includes('<!--SEO-JSONLD-->') ? index.replace(/<!--SEO-JSONLD-->[\s\S]*?<!--\/SEO-JSONLD-->/, homeLd) : index.replace('</head>', homeLd + '\n</head>');
 const links = `<!--SEO-LINKS--><nav aria-label="Servicios en Playa del Carmen" class="wrap" style="display:flex;flex-wrap:wrap;gap:8px 18px;margin:26px auto 0;font-size:13px;color:#A99C8E">${pages.map((p) => `<a href="/${p.slug}" style="color:#CFC1B1">${esc(p.h1)}</a>`).join('')}</nav><!--/SEO-LINKS-->`;
 index = index.includes('<!--SEO-LINKS-->') ? index.replace(/<!--SEO-LINKS-->[\s\S]*?<!--\/SEO-LINKS-->/, links) : index.replace('</footer>', links + '\n</footer>');
+
+const igPosts = (CONFIG.instagramPosts || []);
+const igSection = `<!--IG-SECTION--><section id="instagram" aria-labelledby="ig-title" style="padding:100px 0 90px;overflow:hidden">
+  <div class="wrap kv-reveal" style="padding:0 20px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:36px">
+    <div><p class="eyebrow" data-t="igEyebrow">Instagram</p><h2 id="ig-title" style="font-size:clamp(38px,4.8vw,60px);line-height:1.04" data-t="igTitle">Nuestro trabajo, en vivo.</h2>
+    <p style="margin:12px 0 0;max-width:520px;font-size:16px;line-height:1.7;color:#D9CBBB" data-t="igSub">Pestañas, keratina y cejas reales de nuestras clientas en Playa del Carmen. Por Karen Valero, cosmetóloga y lash artist.</p></div>
+    <a class="btn btn-outline" href="${CONFIG.instagram}" target="_blank" rel="noopener"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor"></circle></svg><span>@kavera.aesthetics</span></a>
+  </div>
+  <div class="ig-row">${igPosts.map((p) => `<div class="ig-item"><iframe src="https://www.instagram.com/${p}/embed/" title="Publicación de Instagram de @kavera.aesthetics" loading="lazy" allowtransparency="true" allowfullscreen="true" scrolling="no"></iframe></div>`).join('')}</div>
+</section><!--/IG-SECTION-->`;
+index = index.includes('<!--IG-SECTION-->') ? index.replace(/<!--IG-SECTION-->[\s\S]*?<!--\/IG-SECTION-->/, igSection) : index.replace('<!-- REVIEWS -->', igSection + '\n\n<!-- REVIEWS -->');
 fs.writeFileSync(path.join(ROOT, 'index.html'), index);
 
 // ---- sitemap, robots, llms.txt ----
@@ -224,7 +236,7 @@ Sitemap: ${SITE}/sitemap.xml
 const line = (s) => `- ${s.name}: ${s.prices.map((p) => `${p[0]} ${p[1]}`).join('; ')}`;
 fs.writeFileSync(path.join(ROOT, 'llms.txt'), `# Kavéra Aesthetics
 
-> Private beauty studio in Playa del Carmen, Quintana Roo, Mexico. Eyelash extensions (classic, mascara effect, 3D/5D, Aura, Hawaiian, Volume 8D, eyeliner, wispy), lash lift, brow lamination, keratin hair treatment and facials. Prices in Mexican pesos (MXN). Book online at ${SITE}/reservar or on WhatsApp ${PHONE}. Spanish first; English available on the site.
+> Private beauty studio in Playa del Carmen, Quintana Roo, Mexico, run by cosmetologist and lash artist Karen Valero. Eyelash extensions (classic, mascara effect, 3D/5D, Aura, Hawaiian, Volume 8D, eyeliner, wispy), lash lift, brow lamination, keratin hair treatment and facials. Prices in Mexican pesos (MXN). Book online at ${SITE}/reservar or on WhatsApp ${PHONE}. Spanish first; English available on the site.
 
 Estudio privado de belleza en Playa del Carmen, Quintana Roo, México: extensiones de pestañas, lifting de pestañas, laminado de cejas, keratina y faciales. Agenda en ${SITE}/reservar o por WhatsApp al ${PHONE}. La ubicación exacta del estudio se comparte por WhatsApp al confirmar la cita.
 
