@@ -43,6 +43,7 @@ window.KV = (function () {
       bookThis: 'Reservar',
       howEyebrow: 'Cómo reservar', howTitle: 'Tu cita en cuatro pasos.',
       offerEyebrow: 'Primera visita', offerTitle: '% de descuento en tu primera cita', offerSub: 'Menciónalo al reservar. [CONDICIONES]', offerBtn: 'Quiero mi descuento',
+      subEyebrow: 'Promociones', subTitle: 'Sé la primera en enterarte.', subSub: 'Recibe promociones, lugares libres de la semana y novedades de Kavéra por correo o WhatsApp. Sin spam: te das de baja cuando quieras.', subName: 'Tu nombre', subEmail: 'Correo', subWa: 'WhatsApp', subOptEmail: 'Quiero recibir promociones por correo', subOptWa: 'Quiero recibir promociones por WhatsApp', subLegal: 'Al suscribirte aceptas nuestro', subLegalLink: 'aviso de privacidad', subBtn: 'Suscribirme', subOk: '¡Listo! Ya estás en la lista 💕', subNeed: 'Escribe tu correo o tu WhatsApp y marca al menos una opción.', subErr: 'No se pudo guardar. Intenta de nuevo o escríbenos por WhatsApp.', subWaMsg: 'Hola Kavéra, quiero recibir promociones.',
       featEyebrow: 'Temporada de Halloween 🎃', featTitle: 'Lo nuevo en Kavéra.', featSub: 'Mira nuestro Reel de temporada y aparta tu cita para lucir increíble este Halloween y Día de Muertos.', igFollow: 'Síguenos @kavera.aesthetics',
       igEyebrow: 'Instagram', igTitle: 'Nuestro trabajo, en vivo.', igSub: 'Pestañas, keratina y cejas reales de nuestras clientas en Playa del Carmen. Por Karen Valero, cosmetóloga y lash artist.',
       revEyebrow: 'Clientas felices', revTitle: 'Lo que dicen de Kavéra.', revText: '[Pega aquí una reseña real de una clienta]', revWho: '[Nombre]',
@@ -99,6 +100,7 @@ window.KV = (function () {
       bookThis: 'Book',
       howEyebrow: 'How to book', howTitle: 'Your appointment in four steps.',
       offerEyebrow: 'First visit', offerTitle: '% off your first appointment', offerSub: 'Mention it when you book. [TERMS]', offerBtn: 'Claim my discount',
+      subEyebrow: 'Promotions', subTitle: 'Be the first to know.', subSub: 'Get promotions, open spots this week and Kavéra news by email or WhatsApp. No spam: unsubscribe anytime.', subName: 'Your name', subEmail: 'Email', subWa: 'WhatsApp', subOptEmail: 'Send me promotions by email', subOptWa: 'Send me promotions on WhatsApp', subLegal: 'By subscribing you accept our', subLegalLink: 'privacy notice', subBtn: 'Subscribe', subOk: 'Done! You are on the list 💕', subNeed: 'Enter your email or WhatsApp and check at least one option.', subErr: 'Could not save. Try again or message us on WhatsApp.', subWaMsg: 'Hi Kavéra, I would like to receive promotions.',
       featEyebrow: 'Halloween season 🎃', featTitle: 'New at Kavéra.', featSub: 'Watch our seasonal Reel and book your appointment to look amazing this Halloween and Día de Muertos.', igFollow: 'Follow @kavera.aesthetics',
       igEyebrow: 'Instagram', igTitle: 'Our work, live.', igSub: 'Real lashes, keratin and brows from our clients in Playa del Carmen. By Karen Valero, cosmetologist and lash artist.',
       revEyebrow: 'Happy clients', revTitle: 'What they say about Kavéra.', revText: '[Paste a real client review here]', revWho: '[Name]',
@@ -171,5 +173,27 @@ window.KV = (function () {
     els.forEach((e) => io.observe(e));
   }
 
-  return { CONFIG, T, getLang, setLang, wa, esc, applyText, langButtons, reveal };
+  // Subscriber form (email + WhatsApp opt-in). Saves via /api/subscribe; falls back to WhatsApp if not configured.
+  function initSubscribe() {
+    const f = document.getElementById('subscribe-form'); if (!f || f._kvReady) return; f._kvReady = true;
+    f.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const t = T[getLang()], msg = document.getElementById('subscribe-msg'), btn = f.querySelector('button[type=submit]');
+      const el = f.elements; const d = { name: el.namedItem('name').value.trim(), email: el.namedItem('email').value.trim(), whatsapp: el.namedItem('whatsapp').value.trim(), optEmail: el.namedItem('optEmail').checked, optWhatsapp: el.namedItem('optWhatsapp').checked, website: el.namedItem('website').value, lang: getLang(), source: location.pathname };
+      if ((!d.email && !d.whatsapp) || (!(d.optEmail && d.email) && !(d.optWhatsapp && d.whatsapp))) { msg.textContent = t.subNeed; return; }
+      btn.disabled = true; msg.textContent = '…';
+      try {
+        const r = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) });
+        if (r.ok) { f.reset(); msg.textContent = t.subOk; }
+        else if (r.status === 503) {
+          const lines = [t.subWaMsg, d.name && (t.waName + ': ' + d.name), d.email && ('Email: ' + d.email), d.whatsapp && ('WhatsApp: ' + d.whatsapp), (d.optEmail ? '✓ email' : '') + (d.optWhatsapp ? ' ✓ WhatsApp' : '')].filter(Boolean);
+          window.open(wa(lines.join('\n')), '_blank', 'noopener'); f.reset(); msg.textContent = t.subOk;
+        } else msg.textContent = t.subErr;
+      } catch (err) { msg.textContent = t.subErr; }
+      btn.disabled = false;
+    });
+  }
+  if (typeof document !== 'undefined' && document.addEventListener) document.addEventListener('DOMContentLoaded', initSubscribe);
+
+  return { CONFIG, T, getLang, setLang, wa, esc, applyText, langButtons, reveal, initSubscribe };
 })();

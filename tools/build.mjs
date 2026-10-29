@@ -166,6 +166,7 @@ ${pg.faq.map(([q, a]) => `    <details><summary>${esc(q)}<span class="kv-plus" a
     <a class="btn btn-pink" href="${book}">${es ? 'Agendar cita' : 'Book now'}</a>
     <a class="btn btn-outline" href="${WA(waText)}" target="_blank" rel="noopener">${es ? 'Escríbenos por WhatsApp' : 'Message us on WhatsApp'}</a>
   </div>
+  <p style="margin-top:18px"><a href="/#promociones" style="text-decoration:underline">${es ? '✦ Recibe promociones por correo o WhatsApp' : '✦ Get promotions by email or WhatsApp'}</a></p>
   ${others.length ? `<h2>${es ? 'Otros servicios en Playa del Carmen' : 'More'}</h2>\n  <div class="more">${others.map((o) => `<a href="/${o.slug}">${esc(o.h1)}</a>`).join('')}${alt ? `<a href="/${alt}" hreflang="${es ? 'en' : 'es'}">${es ? 'English' : 'Español'}</a>` : ''}</div>` : (alt ? `<div class="more"><a href="/${alt}" hreflang="es">Español</a></div>` : '')}
 </main>
 <footer style="border-top:1px solid rgba(243,230,216,.14);padding:40px 20px">
@@ -214,12 +215,75 @@ const igSection = `<!--IG-SECTION--><section id="instagram" aria-labelledby="ig-
   </div>
   <div class="ig-row">${igPosts.map((p) => `<div class="ig-item">${igEmbed(p)}</div>`).join('')}</div>
 </section><!--/IG-SECTION-->`;
+// ---- subscriber section (email + WhatsApp opt-in) ----
+const ts = T.es;
+const field = (name, type, key, ac) => `<label class="field" style="flex:1 1 200px"><span data-t="${key}">${esc(ts[key])}</span><input type="${type}" name="${name}" autocomplete="${ac}" style="min-height:52px;border-radius:16px"></label>`;
+const subSection = `<!--SUB-SECTION--><section id="promociones" aria-labelledby="sub-title" style="padding:0 20px 100px">
+  <div class="kv-reveal sub-card">
+    <div style="flex:1 1 340px;min-width:0">
+      <p class="eyebrow" style="color:#7A3A47" data-t="subEyebrow">${esc(ts.subEyebrow)}</p>
+      <h2 id="sub-title" style="font-size:clamp(36px,4.6vw,56px);line-height:1.04" data-t="subTitle">${esc(ts.subTitle)}</h2>
+      <p style="margin:14px 0 0;font-size:16px;line-height:1.7;color:#4E3D40;max-width:440px" data-t="subSub">${esc(ts.subSub)}</p>
+    </div>
+    <form id="subscribe-form" novalidate style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;flex-wrap:wrap;gap:12px">${field('name', 'text', 'subName', 'given-name')}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">${field('email', 'email', 'subEmail', 'email')}${field('whatsapp', 'tel', 'subWa', 'tel')}</div>
+      <label class="check"><input type="checkbox" name="optEmail" checked><span data-t="subOptEmail">${esc(ts.subOptEmail)}</span></label>
+      <label class="check"><input type="checkbox" name="optWhatsapp"><span data-t="subOptWa">${esc(ts.subOptWa)}</span></label>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <button type="submit" class="btn btn-wine kv-shine" style="align-self:flex-start"><span data-t="subBtn">${esc(ts.subBtn)}</span></button>
+      <p style="margin:0;font-size:13px;color:#6A585B"><span data-t="subLegal">${esc(ts.subLegal)}</span> <a href="/privacidad" style="color:#7A3A47;text-decoration:underline" data-t="subLegalLink">${esc(ts.subLegalLink)}</a>.</p>
+      <p id="subscribe-msg" role="status" aria-live="polite" style="margin:0;font-size:15px;font-weight:500;color:#7A3A47;min-height:22px"></p>
+    </form>
+  </div>
+</section><!--/SUB-SECTION-->`;
+index = index.replace(/<!--SUB-SECTION-->[\s\S]*?<!--\/SUB-SECTION-->\s*/, '');
+index = index.replace('<!-- REVIEWS -->', subSection + '\n\n<!-- REVIEWS -->');
 index = index.replace(/<!--IG-SECTION-->[\s\S]*?<!--\/IG-SECTION-->\s*/, '');
 index = index.replace('<!-- TREATMENT SCENES -->', igSection + '\n\n<!-- TREATMENT SCENES -->');
 fs.writeFileSync(path.join(ROOT, 'index.html'), index);
 
+
+// ---- aviso de privacidad ----
+fs.writeFileSync(path.join(ROOT, 'privacidad.html'), `<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aviso de privacidad · Kavéra Aesthetics</title>
+<meta name="description" content="Aviso de privacidad simplificado de Kavéra Aesthetics, Playa del Carmen: qué datos usamos, para qué y cómo darte de baja.">
+<link rel="canonical" href="${SITE}/privacidad">
+<link rel="icon" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>.lp{max-width:760px;margin:0 auto;padding:56px 20px 80px}.lp h1{font-size:clamp(38px,6vw,56px);margin:0 0 20px}.lp h2{font-size:28px;margin:36px 0 10px}.lp p,.lp li{font-size:16px;line-height:1.75;color:#D9CBBB}.lp a{text-decoration:underline}</style>
+</head>
+<body>
+<header class="nav"><nav><a href="/" class="brand"><img src="/logo.jpg" alt="Kavéra Aesthetics"><span>KAVÉRA</span></a><a class="btn btn-pink" href="/reservar" style="min-height:44px;padding:0 20px;font-size:14px">Reservar</a></nav></header>
+<main class="lp">
+  <h1>Aviso de privacidad</h1>
+  <p><strong>Kavéra Aesthetics</strong> (Karen Valero), con domicilio en Playa del Carmen, Quintana Roo, México, es responsable del uso de tus datos personales. Contacto: <a href="mailto:hola@kavera.mx">hola@kavera.mx</a> · WhatsApp ${PHONE}.</p>
+  <h2>¿Qué datos usamos?</h2>
+  <p>Nombre, correo electrónico, número de WhatsApp y los datos de tu cita (servicio, día y hora, notas que tú nos compartas).</p>
+  <h2>¿Para qué?</h2>
+  <ul>
+    <li><strong>Necesarias:</strong> agendar, confirmar, recordar o cambiar tu cita y darte atención.</li>
+    <li><strong>Opcionales (solo si las aceptas):</strong> enviarte promociones, lugares disponibles y novedades por correo y/o WhatsApp.</li>
+  </ul>
+  <p>Puedes dejar de recibir promociones en cualquier momento con el enlace de baja en cada correo, respondiendo "BAJA" por WhatsApp o escribiendo a <a href="mailto:hola@kavera.mx">hola@kavera.mx</a>.</p>
+  <h2>¿Con quién se comparten?</h2>
+  <p>No vendemos tus datos. Solo los procesan los servicios que usamos para operar: alojamiento del sitio (Vercel), correo y envío de promociones (Google y Brevo), agenda (Cal.com / Google Calendar) y mensajería (WhatsApp).</p>
+  <h2>Tus derechos (ARCO)</h2>
+  <p>Puedes acceder, rectificar, cancelar u oponerte al uso de tus datos, o revocar tu consentimiento, escribiendo a <a href="mailto:hola@kavera.mx">hola@kavera.mx</a>. Te respondemos por el mismo medio.</p>
+  <h2>Cambios</h2>
+  <p>Cualquier cambio a este aviso se publicará en esta página. Última actualización: ${TODAY}.</p>
+</main>
+</body>
+</html>
+`);
+
 // ---- sitemap, robots, llms.txt ----
-const urls = ['/', '/reservar', ...pages.map((p) => '/' + p.slug)];
+const urls = ['/', '/reservar', ...pages.map((p) => '/' + p.slug), '/privacidad'];
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => `  <url><loc>${SITE}${u === '/' ? '/' : u}</loc><lastmod>${TODAY}</lastmod></url>`).join('\n')}

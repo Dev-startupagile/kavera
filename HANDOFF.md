@@ -159,6 +159,13 @@ Goal: be the answer when someone in Playa del Carmen searches (Google, ChatGPT, 
 - **IndexNow** (instant indexing for Bing, which feeds ChatGPT search/Copilot): key file /91a3a34391937d9c208ce7a1cc3b861f.txt. After publishing changes, ping: https://api.indexnow.org/indexnow?url=<page-url>&key=91a3a34391937d9c208ce7a1cc3b861f (one GET per changed URL).
 - Next SEO steps (need DJ's logins): verify kavera.mx in **Google Search Console** and **Bing Webmaster Tools** (Bing feeds ChatGPT search) via a DNS TXT record in Namecheap, submit sitemap. Get listed/mentioned on local pages (partners' sites, Playa expat groups, directories). Instagram bio link to kavera.mx. Google Business Profile postponed until permanent studio.
 
+## 8e. Subscribers + Instagram (2026-10-28)
+- **Subscribe form** on the homepage (#promociones): name, email, WhatsApp, separate opt-ins for email and WhatsApp promos, link to /privacidad. Posts to **/api/subscribe** (Vercel function in api/subscribe.js) → **Brevo** (free plan: 100k contacts, 300 emails/day).
+- **To switch it on:** create a free Brevo account (Karen's or SA's), make two lists ("Promos email", "Promos WhatsApp"), then in Vercel → kavera project → Settings → Environment Variables add BREVO_API_KEY, BREVO_LIST_EMAIL, BREVO_LIST_WHATSAPP (list ids) and redeploy. Until then, sign-ups open WhatsApp to Karen with the person's details (nothing lost).
+- **/privacidad**: simplified Mexican privacy notice (aviso de privacidad). Template, not legal advice.
+- **Instagram**: section right under the hero; CONFIG.featuredPost (currently the Halloween Reel reel/DeaD133IZvK, shown in a phone frame) and CONFIG.instagramPosts (row of 11). Change in site.js, run build.
+- Cache-busting: build adds ?v=<hash> to styles.css/site.js links.
+
 ## 9. AI booking agent, plan (not built yet)
 
 ### Research 2026-10-16: recommended route = buy, don't build
