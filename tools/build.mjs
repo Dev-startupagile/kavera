@@ -313,7 +313,7 @@ fs.writeFileSync(path.join(ROOT, 'privacidad.html'), `<!doctype html>
   <h1>Aviso de privacidad</h1>
   <p><strong>Kavéra Aesthetics</strong> (Karen Valero), con domicilio en Playa del Carmen, Quintana Roo, México, es responsable del uso de tus datos personales. Contacto: <a href="mailto:hola@kavera.mx">hola@kavera.mx</a> · WhatsApp ${PHONE}.</p>
   <h2>¿Qué datos usamos?</h2>
-  <p>Nombre, correo electrónico, número de WhatsApp y los datos de tu cita (servicio, día y hora, notas que tú nos compartas).</p>
+  <p>Nombre, correo electrónico, número de WhatsApp y los datos de tu cita (servicio, día y hora, notas que tú nos compartas). En la ficha de consentimiento también te pedimos datos de salud relacionados con tu servicio (alergias, cirugías o condiciones en ojos y piel) y tu firma; estos son <strong>datos sensibles</strong> y solo los usamos, con tu consentimiento expreso, para atenderte de forma segura.</p>
   <h2>¿Para qué?</h2>
   <ul>
     <li><strong>Necesarias:</strong> agendar, confirmar, recordar o cambiar tu cita y darte atención.</li>

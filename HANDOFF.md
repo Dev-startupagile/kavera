@@ -229,3 +229,11 @@ Agent knowledge source: everything in `KV.T.es` (services, prices, FAQ, steps), 
 - Instagram bio: "✦ Kavéra Aesthetics · Quintana Roo / Pestañas · Faciales · Keratina · Cejas / Agenda tu cita 👇 kavera.mx"
 - WhatsApp greeting: "¡Hola! Gracias por escribir a Kavéra 🌸 Cuéntame qué servicio te interesa y qué día te queda mejor, y te confirmo tu cita en un momento."
 - Growth ideas given to DJ: before/after photos, real reviews, Google Business Profile, Reels from the site animations, lash-refill reminders every 2–3 weeks, combos/gift cards, referral discount, FAQ.
+
+## 8f. Consent form (ficha y consentimiento), added 2026-10-30
+- Page: https://www.kavera.mx/consentimiento (noindex). Karen sends the link before the appointment. It can be prefilled:
+  `kavera.mx/consentimiento?fecha=2026-11-02&hora=11:00&nombre=Ana&s=lashes`  (s = lashes, lift, refill, brows, facials, keratin; comma-separated)
+- Client gives name + phone OR email (identity), answers 9 yes/no health questions, accepts 2 required boxes (service + privacy/health data), optional portfolio photos and promos, and signs with her finger.
+- Delivery: POST /api/consent → Brevo transactional email to hola@kavera.mx (forwards to Karen's Gmail) with signature attached. Env: BREVO_API_KEY (required), CONSENT_TO, CONSENT_FROM (optional, sender must be verified in Brevo).
+  Until Brevo is set: the page opens WhatsApp to Karen with the full answers, and the client can download a signed PNG copy.
+- Booking done screen and privacy notice (datos sensibles) now mention the form.

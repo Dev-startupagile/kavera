@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ficha y consentimiento · Kavéra Aesthetics</title>
+<meta name="description" content="Ficha de información y consentimiento de Kavéra Aesthetics, Playa del Carmen. Llénala antes de tu cita.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1E2A1D">
+<link rel="icon" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=191fd933">
+<style>
+.wrapc{max-width:760px;margin:0 auto;padding:40px 18px 90px}
+.cardc{background:#F6ECE3;color:#2E2224;border-radius:30px;padding:30px 24px;margin-top:22px;box-shadow:0 40px 80px -50px rgba(0,0,0,.7)}
+.cardc h2{font-size:30px;font-weight:600;margin:0 0 14px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.field input,.field select,.field textarea{min-height:50px;border-radius:14px}
+.q{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:14px 0;border-top:1px solid rgba(154,79,92,.15);font-size:16px;line-height:1.45}
+.q:first-of-type{border-top:0}
+.yn{display:flex;gap:8px;flex:none}
+.yn label{position:relative}
+.yn input{position:absolute;opacity:0;inset:0}
+.yn span{display:inline-flex;align-items:center;justify-content:center;min-width:64px;min-height:44px;border-radius:999px;border:1px solid rgba(122,58,71,.35);font-size:15px;cursor:pointer;background:#fff}
+.yn input:checked+span{background:#7A3A47;color:#FFF6EE;border-color:#7A3A47}
+.yn input:focus-visible+span{outline:2px solid #7A3A47;outline-offset:2px}
+.check{display:flex;align-items:flex-start;gap:12px;font-size:15px;line-height:1.5;color:#4E3D40;padding:8px 0;cursor:pointer}
+.check input{width:22px;height:22px;accent-color:#7A3A47;flex:none;margin-top:1px}
+.svc{display:flex;flex-wrap:wrap;gap:8px}
+.svc label{position:relative}.svc input{position:absolute;opacity:0;inset:0}
+.svc span{display:inline-flex;min-height:44px;align-items:center;padding:0 16px;border-radius:999px;border:1px solid rgba(122,58,71,.35);background:#fff;font-size:15px;cursor:pointer}
+.svc input:checked+span{background:#7A3A47;color:#FFF6EE;border-color:#7A3A47}
+.terms{font-size:14.5px;line-height:1.65;color:#4E3D40}
+.terms li{margin-bottom:8px}
+#sig{width:100%;height:180px;background:#fff;border-radius:16px;border:1.5px dashed rgba(122,58,71,.45);touch-action:none;display:block}
+.err{color:#9A2A3A;font-size:14px;font-weight:500;min-height:20px;margin:6px 0 0}
+.req::after{content:" *";color:#9A2A3A}
+.done{display:none;text-align:center}
+@media print{header.nav,.noprint{display:none!important}body{background:#fff;color:#000}.cardc{box-shadow:none}}
+</style>
+</head>
+<body>
+<header class="nav noprint"><nav><a href="/" class="brand"><img src="/logo.jpg" alt="Kavéra Aesthetics"><span>KAVÉRA</span></a><a class="btn btn-pink" href="https://wa.me/529841318637" target="_blank" rel="noopener" style="min-height:44px;padding:0 18px;font-size:14px">WhatsApp</a></nav></header>
+
+<main class="wrapc">
+  <p class="eyebrow">Antes de tu cita</p>
+  <h1 style="font-size:clamp(40px,8vw,62px);line-height:1.02">Ficha y consentimiento</h1>
+  <p style="color:#D9CBBB;font-size:16px;line-height:1.7;margin:14px 0 0">Llena esta ficha antes de tu cita. Nos ayuda a cuidar tu salud y a elegir los productos correctos para ti. Toma 2 minutos.</p>
+
+  <form id="cf" novalidate>
+    <section class="cardc">
+      <h2>Tu cita</h2>
+      <div class="grid2">
+        <label class="field"><span class="req">Fecha de la cita</span><input type="date" name="fecha" required></label>
+        <label class="field"><span>Hora de la cita</span><input type="time" name="hora"></label>
+      </div>
+      <p style="margin:16px 0 8px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#6A3A44" class="req">Servicio(s)</p>
+      <div class="svc" id="svc">
+        <label><input type="checkbox" name="svc" value="Extensiones de pestañas"><span>Extensiones de pestañas</span></label>
+        <label><input type="checkbox" name="svc" value="Lifting de pestañas"><span>Lifting de pestañas</span></label>
+        <label><input type="checkbox" name="svc" value="Retoque"><span>Retoque</span></label>
+        <label><input type="checkbox" name="svc" value="Laminado de cejas"><span>Laminado de cejas</span></label>
+        <label><input type="checkbox" name="svc" value="Facial"><span>Facial</span></label>
+        <label><input type="checkbox" name="svc" value="Keratina"><span>Keratina</span></label>
+      </div>
+    </section>
+
+    <section class="cardc">
+      <h2>Tus datos</h2>
+      <div class="grid2">
+        <label class="field" style="grid-column:1/-1"><span class="req">Nombre completo</span><input name="nombre" autocomplete="name" required></label>
+        <label class="field"><span class="req">WhatsApp / teléfono</span><input name="telefono" type="tel" autocomplete="tel" placeholder="984 123 4567"></label>
+        <label class="field"><span>Correo electrónico</span><input name="email" type="email" autocomplete="email"></label>
+      </div>
+      <p style="font-size:13px;color:#6A585B;margin:8px 0 0">Necesitamos tu teléfono o tu correo: es el dato con el que confirmas tu identidad al firmar.</p>
+      <label class="check" style="margin-top:8px"><input type="checkbox" name="promo"><span>Acepto recibir información y promociones de Kavéra por WhatsApp o correo (opcional).</span></label>
+    </section>
+
+    <section class="cardc">
+      <h2>Tu salud</h2>
+      <div id="qs"></div>
+      <label class="field" style="margin-top:10px"><span>Si respondiste "sí" a algo, cuéntanos más (alergias, cirugía, medicamentos, etc.)</span><textarea name="notas" rows="3" style="padding:12px 16px"></textarea></label>
+    </section>
+
+    <section class="cardc">
+      <h2>Consentimiento</h2>
+      <ul class="terms" id="terms"></ul>
+      <label class="check"><input type="checkbox" name="c1"><span class="req">Leí y entiendo la información anterior, mis respuestas son verdaderas y autorizo a Kavéra Aesthetics a realizar el/los servicio(s) seleccionado(s).</span></label>
+      <label class="check"><input type="checkbox" name="c2"><span class="req">Autorizo el uso de mis datos personales y de salud para mi atención, según el <a href="/privacidad" target="_blank" style="color:#7A3A47;text-decoration:underline">aviso de privacidad</a>.</span></label>
+      <label class="check"><input type="checkbox" name="fotos"><span>Autorizo que se tomen fotos de mis ojos/cejas/cabello (sin mostrar mi rostro completo) para el portafolio y redes de Kavéra (opcional).</span></label>
+      <p style="margin:18px 0 8px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#6A3A44" class="req">Firma con tu dedo</p>
+      <canvas id="sig" aria-label="Área de firma"></canvas>
+      <button type="button" id="clr" class="btn btn-wine-outline noprint" style="margin-top:10px;min-height:40px">Borrar firma</button>
+      <p class="err" id="err" role="alert"></p>
+      <button type="submit" class="btn btn-wine kv-shine noprint" style="width:100%;margin-top:10px;min-height:58px;font-size:17px">Firmar y enviar</button>
+    </section>
+  </form>
+
+  <section class="cardc done" id="done">
+    <svg width="90" height="90" viewBox="0 0 140 140" aria-hidden="true"><circle cx="70" cy="70" r="64" fill="#F2C9CC"/><path d="M44 72 L62 90 L98 52" stroke="#7A3A47" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <h2 style="margin-top:12px">¡Gracias, ficha firmada!</h2>
+    <p id="doneMsg" style="color:#4E3D40;line-height:1.6;margin:0 0 16px">Karen ya recibió tu ficha. ¡Nos vemos en tu cita!</p>
+    <div class="noprint" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
+      <button type="button" class="btn btn-wine" id="dl">Descargar mi copia</button>
+      <a class="btn btn-wine-outline" href="/" style="min-height:56px">Volver a kavera.mx</a>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  const WA = '529841318637';
+  const Q = [
+    ['q1', '¿Te has aplicado extensiones de pestañas antes? (si las retiraste, cuéntanos por qué abajo)'],
+    ['q2', '¿Usas lentes de contacto?'],
+    ['q3', '¿Usas lentes o gafas?'],
+    ['q4', '¿Presentas irritación, ardor o te lloran los ojos frecuentemente?'],
+    ['q5', '¿Te han realizado cirugía alrededor de los ojos en los últimos 6 meses?'],
+    ['q6', '¿Tienes alguna infección, conjuntivitis o condición en ojos o piel actualmente?'],
+    ['q7', '¿Presentas alergia al látex? (algunos materiales como la cinta médica pueden contenerlo)'],
+    ['q8', '¿Presentas alergia al acrílico o a adhesivos/cosméticos?'],
+    ['q9', '¿Estás embarazada o en lactancia?']
+  ];
+  const TERMS = [
+    'Los servicios de extensiones, lifting y laminado usan adhesivos, cinta médica y productos cosméticos que, en casos poco comunes, pueden causar irritación o reacción alérgica.',
+    'Me comprometo a avisar de inmediato si siento ardor, molestia o irritación durante el servicio, y a retirar las extensiones con una profesional si tengo una reacción después.',
+    'Seguiré las indicaciones de cuidado que me den al terminar. Entiendo que la duración del resultado depende de mi ciclo natural y de mis cuidados.',
+    'Kavéra Aesthetics puede negarse a realizar un servicio si considera que no es seguro para mí.'
+  ];
+  const qs = document.getElementById('qs');
+  qs.innerHTML = Q.map(([k, t]) => `<div class="q"><span style="flex:1 1 300px">${t}</span><div class="yn" role="radiogroup" aria-label="${t}"><label><input type="radio" name="${k}" value="Sí"><span>Sí</span></label><label><input type="radio" name="${k}" value="No"><span>No</span></label></div></div>`).join('');
+  document.getElementById('terms').innerHTML = TERMS.map((t) => `<li>${t}</li>`).join('');
+
+  const f = document.getElementById('cf'), el = f.elements, err = document.getElementById('err');
+  const p = new URLSearchParams(location.search);
+  const fecha = el.namedItem('fecha');
+  fecha.value = p.get('fecha') || new Date(Date.now() - new Date().getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
+  if (p.get('hora')) el.namedItem('hora').value = p.get('hora');
+  if (p.get('nombre')) el.namedItem('nombre').value = p.get('nombre');
+  const sMap = { lashes: 'Extensiones de pestañas', lift: 'Lifting de pestañas', refill: 'Retoque', brows: 'Laminado de cejas', facials: 'Facial', keratin: 'Keratina' };
+  (p.get('s') || '').split(',').forEach((s) => { const v = sMap[s]; if (v) document.querySelector(`input[name=svc][value="${v}"]`).checked = true; });
+
+  // signature pad
+  const c = document.getElementById('sig'), ctx = c.getContext('2d'); let drawing = false, signed = false;
+  function size() { const r = c.getBoundingClientRect(), d = window.devicePixelRatio || 1; const img = signed ? c.toDataURL() : null; c.width = r.width * d; c.height = r.height * d; ctx.setTransform(d, 0, 0, d, 0, 0); ctx.lineWidth = 2.4; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#1E2A1D'; if (img) { const i = new Image(); i.onload = () => ctx.drawImage(i, 0, 0, r.width, r.height); i.src = img; } }
+  size(); window.addEventListener('resize', size);
+  const pos = (e) => { const r = c.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+  c.addEventListener('pointerdown', (e) => { drawing = true; c.setPointerCapture(e.pointerId); const [x, y] = pos(e); ctx.beginPath(); ctx.moveTo(x, y); });
+  c.addEventListener('pointermove', (e) => { if (!drawing) return; const [x, y] = pos(e); ctx.lineTo(x, y); ctx.stroke(); signed = true; });
+  ['pointerup', 'pointercancel'].forEach((ev) => c.addEventListener(ev, () => { drawing = false; }));
+  document.getElementById('clr').onclick = () => { ctx.clearRect(0, 0, c.width, c.height); signed = false; };
+
+  let last = null;
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault(); err.textContent = '';
+    const v = (n) => (el.namedItem(n).value || '').trim();
+    const svc = [...f.querySelectorAll('input[name=svc]:checked')].map((i) => i.value);
+    const ans = Q.map(([k, t]) => { const r = f.querySelector(`input[name=${k}]:checked`); return [t, r ? r.value : '']; });
+    const miss = [];
+    if (!v('fecha')) miss.push('fecha'); if (!svc.length) miss.push('servicio'); if (v('nombre').length < 3) miss.push('nombre completo');
+    if (!v('telefono') && !v('email')) miss.push('teléfono o correo');
+    if (v('email') && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('email'))) miss.push('correo válido');
+    if (ans.some((a) => !a[1])) miss.push('todas las preguntas de salud');
+    if (!el.namedItem('c1').checked || !el.namedItem('c2').checked) miss.push('las dos casillas de consentimiento');
+    if (!signed) miss.push('tu firma');
+    if (miss.length) { err.textContent = 'Falta: ' + miss.join(', ') + '.'; return; }
+    const data = {
+      fecha: v('fecha'), hora: v('hora'), servicios: svc, nombre: v('nombre'), telefono: v('telefono'), email: v('email'),
+      promo: el.namedItem('promo').checked, fotos: el.namedItem('fotos').checked, respuestas: ans, notas: v('notas'),
+      terminos: TERMS, firmadoEn: new Date().toISOString(), firma: c.toDataURL('image/png'), pagina: location.href, idioma: navigator.language
+    };
+    last = data;
+    const btn = f.querySelector('button[type=submit]'); btn.disabled = true; btn.textContent = 'Enviando…';
+    let ok = false;
+    try { const r = await fetch('/api/consent', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }); ok = r.ok; } catch (e2) {}
+    if (!ok) {
+      const yes = ans.filter((a) => a[1] === 'Sí').map((a) => '• ' + a[0]);
+      const msg = ['FICHA Y CONSENTIMIENTO FIRMADO ✍️', 'Nombre: ' + data.nombre, 'Tel: ' + (data.telefono || '—'), 'Correo: ' + (data.email || '—'), 'Cita: ' + data.fecha + ' ' + data.hora, 'Servicio: ' + svc.join(', '),
+        'Respuestas "Sí": ' + (yes.length ? '\n' + yes.join('\n') : 'ninguna'), data.notas ? 'Notas: ' + data.notas : '', 'Fotos para portafolio: ' + (data.fotos ? 'Sí' : 'No'), 'Promociones: ' + (data.promo ? 'Sí' : 'No'),
+        'Aceptó términos y aviso de privacidad. Firmado: ' + new Date().toLocaleString('es-MX')].filter(Boolean).join('\n');
+      window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+      document.getElementById('doneMsg').textContent = 'Envía el mensaje que se abrió en WhatsApp para que Karen reciba tu ficha. Descarga tu copia firmada abajo.';
+    }
+    f.style.display = 'none'; document.getElementById('done').style.display = 'block'; window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // downloadable copy (PNG)
+  document.getElementById('dl').onclick = () => {
+    if (!last) return; const W = 1100, lines = [];
+    const add = (t, s) => lines.push([t, s || 'n']);
+    add('Kavéra Aesthetics · Ficha y consentimiento', 'h'); add('Playa del Carmen · kavera.mx · WhatsApp +52 984 131 8637', 's'); add('');
+    add('Nombre: ' + last.nombre); add('Teléfono: ' + (last.telefono || '—') + '    Correo: ' + (last.email || '—'));
+    add('Cita: ' + last.fecha + ' ' + last.hora + '    Servicio: ' + last.servicios.join(', ')); add('');
+    last.respuestas.forEach(([q, a]) => add(a + ' — ' + q, 's'));
+    if (last.notas) add('Notas: ' + last.notas, 's'); add('');
+    last.terminos.forEach((t) => add('• ' + t, 's'));
+    add('✓ Autorizó el servicio y aceptó el aviso de privacidad.', 's'); add('Fotos para portafolio: ' + (last.fotos ? 'Sí' : 'No') + '    Promociones: ' + (last.promo ? 'Sí' : 'No'), 's');
+    add('Firmado: ' + new Date(last.firmadoEn).toLocaleString('es-MX'), 's');
+    const cv = document.createElement('canvas'), g = cv.getContext('2d');
+    const wrap = (t, font, max) => { g.font = font; const w = t.split(' '), out = []; let cur = ''; w.forEach((x) => { const tr = cur ? cur + ' ' + x : x; if (g.measureText(tr).width > max) { out.push(cur); cur = x; } else cur = tr; }); out.push(cur); return out; };
+    const rows = []; lines.forEach(([t, s]) => { const font = s === 'h' ? '600 34px Georgia' : s === 's' ? '20px Arial' : '23px Arial'; wrap(t, font, W - 100).forEach((l) => rows.push([l, font, s === 'h' ? 46 : 30])); });
+    const H = 80 + rows.reduce((a, r) => a + r[2], 0) + 260; cv.width = W; cv.height = H;
+    g.fillStyle = '#fff'; g.fillRect(0, 0, W, H); g.fillStyle = '#1E2A1D'; let y = 70;
+    rows.forEach(([l, font, lh]) => { g.font = font; g.fillText(l, 50, y); y += lh; });
+    const img = new Image(); img.onload = () => { g.strokeStyle = '#999'; g.strokeRect(50, y + 10, 500, 200); g.drawImage(img, 50, y + 10, 500, 200); g.font = '18px Arial'; g.fillText('Firma de ' + last.nombre, 50, y + 236);
+      const a = document.createElement('a'); a.download = 'kavera-consentimiento-' + last.fecha + '.png'; a.href = cv.toDataURL('image/png'); a.click(); };
+    img.src = last.firma;
+  };
+})();
+</script>
+</body>
+</html>
