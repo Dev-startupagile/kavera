@@ -206,7 +206,7 @@ const featBlock = feat ? `
         <a class="btn btn-outline" href="${CONFIG.instagram}" target="_blank" rel="noopener"><span>@kavera.aesthetics</span></a>
       </div>
     </div>
-    <div class="feat-phone kv-float-soft"><div class="feat-screen">${igEmbed(feat)}</div></div>
+    <div class="feat-phone kv-float-soft"><div class="feat-screen">${CONFIG.featuredVideo ? `<video src="${CONFIG.featuredVideo}" poster="${CONFIG.featuredPoster || ''}" autoplay muted loop playsinline preload="metadata" aria-label="Reel navideño de Kavéra: keratina"></video>` : igEmbed(feat)}</div></div>
   </div>` : '';
 const igSection = `<!--IG-SECTION--><section id="instagram" aria-labelledby="ig-title" style="position:relative;padding:90px 0 80px;overflow:hidden">
   <div aria-hidden="true" class="kv-glow" style="position:absolute;width:620px;height:620px;right:-180px;top:-120px;border-radius:50%;background:radial-gradient(circle,rgba(242,170,180,.30) 0%,rgba(242,170,180,0) 65%);pointer-events:none"></div>${featBlock}

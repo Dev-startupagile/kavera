@@ -7,7 +7,8 @@ window.KV = (function () {
     instagram: 'https://www.instagram.com/kavera.aesthetics/',
     // Instagram posts shown on the homepage (newest first). Copy the code from the post link: instagram.com/reel/<CODE>/
     // Featured post shown big in a phone frame near the top (seasonal). Set to null to hide.
-    featuredPost: 'reel/DeaD133IZvK',
+    featuredPost: 'reel/DeaD133IZvK', // used only when featuredVideo is empty
+    featuredVideo: '/media/navidad-keratina.mp4', featuredPoster: '/media/navidad-keratina.jpg',
     instagramPosts: ['p/DeksOWnx7z4', 'reel/DZT5zoLN5dT', 'reel/DZJqM9QN-wq', 'reel/DYtJ3s2NNWG', 'reel/DYku_VERDLT', 'p/DW4tGhbEUZG', 'p/DWhXIHFEUg5', 'reel/DWR4cnuAZBQ', 'p/DJzjFj4RK9H', 'reel/DHMh3JkxnOS', 'p/DB7S4hExlXm'],
     hours: ['10:00', '11:30', '13:00', '15:00', '16:30', '18:00'],
     discount: '[X]'
@@ -44,7 +45,7 @@ window.KV = (function () {
       howEyebrow: 'Cómo reservar', howTitle: 'Tu cita en cuatro pasos.',
       offerEyebrow: 'Primera visita', offerTitle: '% de descuento en tu primera cita', offerSub: 'Menciónalo al reservar. [CONDICIONES]', offerBtn: 'Quiero mi descuento',
       subEyebrow: 'Promociones', subTitle: 'Sé la primera en enterarte.', subSub: 'Recibe promociones, lugares libres de la semana y novedades de Kavéra por correo o WhatsApp. Sin spam: te das de baja cuando quieras.', subName: 'Tu nombre', subEmail: 'Correo', subWa: 'WhatsApp', subOptEmail: 'Quiero recibir promociones por correo', subOptWa: 'Quiero recibir promociones por WhatsApp', subLegal: 'Al suscribirte aceptas nuestro', subLegalLink: 'aviso de privacidad', subBtn: 'Suscribirme', subOk: '¡Listo! Ya estás en la lista 💕', subNeed: 'Escribe tu correo o tu WhatsApp y marca al menos una opción.', subErr: 'No se pudo guardar. Intenta de nuevo o escríbenos por WhatsApp.', subWaMsg: 'Hola Kavéra, quiero recibir promociones.',
-      featEyebrow: 'Temporada de Halloween 🎃', featTitle: 'Lo nuevo en Kavéra.', featSub: 'Mira nuestro Reel de temporada y aparta tu cita para lucir increíble este Halloween y Día de Muertos.', igFollow: 'Síguenos @kavera.aesthetics',
+      featEyebrow: 'Temporada navideña 🎄', featTitle: 'Brilla esta Navidad.', featSub: 'Promociones navideñas en keratina, pestañas, cejas y faciales. Las fechas de diciembre se llenan rápido: aparta tu cita y llega a tus fiestas lista para brillar.', igFollow: 'Síguenos @kavera.aesthetics',
       igEyebrow: 'Instagram', igTitle: 'Nuestro trabajo, en vivo.', igSub: 'Pestañas, keratina y cejas reales de nuestras clientas en Playa del Carmen. Por Karen Valero, cosmetóloga y lash artist.',
       revEyebrow: 'Clientas felices', revTitle: 'Lo que dicen de Kavéra.', revText: '[Pega aquí una reseña real de una clienta]', revWho: '[Nombre]',
       faqEyebrow: 'Preguntas frecuentes', faqTitle: 'Todo lo que quieres saber.',
@@ -101,7 +102,7 @@ window.KV = (function () {
       howEyebrow: 'How to book', howTitle: 'Your appointment in four steps.',
       offerEyebrow: 'First visit', offerTitle: '% off your first appointment', offerSub: 'Mention it when you book. [TERMS]', offerBtn: 'Claim my discount',
       subEyebrow: 'Promotions', subTitle: 'Be the first to know.', subSub: 'Get promotions, open spots this week and Kavéra news by email or WhatsApp. No spam: unsubscribe anytime.', subName: 'Your name', subEmail: 'Email', subWa: 'WhatsApp', subOptEmail: 'Send me promotions by email', subOptWa: 'Send me promotions on WhatsApp', subLegal: 'By subscribing you accept our', subLegalLink: 'privacy notice', subBtn: 'Subscribe', subOk: 'Done! You are on the list 💕', subNeed: 'Enter your email or WhatsApp and check at least one option.', subErr: 'Could not save. Try again or message us on WhatsApp.', subWaMsg: 'Hi Kavéra, I would like to receive promotions.',
-      featEyebrow: 'Halloween season 🎃', featTitle: 'New at Kavéra.', featSub: 'Watch our seasonal Reel and book your appointment to look amazing this Halloween and Día de Muertos.', igFollow: 'Follow @kavera.aesthetics',
+      featEyebrow: 'Holiday season 🎄', featTitle: 'Shine this Christmas.', featSub: 'Holiday promotions on keratin, lashes, brows and facials. December dates fill up fast: book now and arrive at every party ready to shine.', igFollow: 'Follow @kavera.aesthetics',
       igEyebrow: 'Instagram', igTitle: 'Our work, live.', igSub: 'Real lashes, keratin and brows from our clients in Playa del Carmen. By Karen Valero, cosmetologist and lash artist.',
       revEyebrow: 'Happy clients', revTitle: 'What they say about Kavéra.', revText: '[Paste a real client review here]', revWho: '[Name]',
       faqEyebrow: 'FAQ', faqTitle: 'Everything you want to know.',
