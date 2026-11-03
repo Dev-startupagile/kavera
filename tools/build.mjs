@@ -387,10 +387,14 @@ ${pages.map((p) => `- [${strip(p.h1)}](${SITE}/${p.slug}): ${p.description}`).jo
 // ---- cache-busting: version the CSS/JS links so browsers always get the latest ----
 import crypto from 'node:crypto';
 const ver = (f) => crypto.createHash('md5').update(fs.readFileSync(path.join(ROOT, f))).digest('hex').slice(0, 8);
-const V = { 'styles.css': ver('styles.css'), 'site.js': ver('site.js') };
+const V = { 'styles.css': ver('styles.css'), 'site.js': ver('site.js'), 'snow.js': ver('snow.js') };
+// holiday snow on every page except the consent form (snow.js switches itself off after Jan 6, 2027)
+const SNOW = (on) => on ? `<!--SNOW--><script src="/snow.js?v=${V['snow.js']}" defer></script><!--/SNOW-->` : '';
 for (const f of fs.readdirSync(ROOT).filter((f) => f.endsWith('.html'))) {
   const fp = path.join(ROOT, f); let h = fs.readFileSync(fp, 'utf8');
   h = h.replace(/(href|src)="\/(styles\.css|site\.js)(\?v=[a-f0-9]+)?"/g, (m, a, file) => `${a}="/${file}?v=${V[file]}"`);
+  h = h.replace(/<!--SNOW-->[\s\S]*?<!--\/SNOW-->/g, '');
+  if (f !== 'consentimiento.html') h = h.replace(/<\/body>/i, SNOW(true) + '\n</body>');
   fs.writeFileSync(fp, h);
 }
 

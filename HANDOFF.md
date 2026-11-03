@@ -237,3 +237,7 @@ Agent knowledge source: everything in `KV.T.es` (services, prices, FAQ, steps), 
 - Delivery: POST /api/consent → Brevo transactional email to hola@kavera.mx (forwards to Karen's Gmail) with signature attached. Env: BREVO_API_KEY (required), CONSENT_TO, CONSENT_FROM (optional, sender must be verified in Brevo).
   Until Brevo is set: the page opens WhatsApp to Karen with the full answers, and the client can download a signed PNG copy.
 - Booking done screen and privacy notice (datos sensibles) now mention the form.
+
+## 8g. Holiday season (added 2026-11-03)
+- Featured reel in the Instagram section is now a self-hosted Christmas keratina video: /media/navidad-keratina.mp4 (+ .jpg poster). Set by CONFIG.featuredVideo in site.js; empty it to go back to an Instagram embed (CONFIG.featuredPost).
+- Snow: /snow.js, injected by the build on every page except /consentimiento. Turns itself off automatically on Jan 7, 2027 (no deploy needed). Add ?nosnow to any URL to hide it. Off for "reduce motion" users.
