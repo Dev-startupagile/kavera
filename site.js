@@ -26,7 +26,7 @@ window.KV = (function () {
 
   const T = {
     es: {
-      navScenes: 'Tratamientos', navServices: 'Precios', navFaq: 'Preguntas', navBook: 'Reservar',
+      navScenes: 'Tratamientos', navServices: 'Precios', navFaq: 'Preguntas', navConsent: 'Consentimiento', navBook: 'Reservar',
       eyebrow: 'Estética · Quintana Roo',
       h1a: 'Tu belleza,', h1b: 'en su versión más pura.',
       heroSub: 'Pestañas, faciales, keratina y cejas con un toque delicado y profesional. Un espacio pensado para que te sientas consentida desde que llegas.',
@@ -83,7 +83,7 @@ window.KV = (function () {
       locale: 'es-MX'
     },
     en: {
-      navScenes: 'Treatments', navServices: 'Prices', navFaq: 'FAQ', navBook: 'Book',
+      navScenes: 'Treatments', navServices: 'Prices', navFaq: 'FAQ', navConsent: 'Consent form', navBook: 'Book',
       eyebrow: 'Aesthetics · Quintana Roo',
       h1a: 'Your beauty,', h1b: 'in its purest form.',
       heroSub: 'Lashes, facials, keratin and brows with a delicate, professional touch. A space designed to pamper you from the moment you arrive.',
